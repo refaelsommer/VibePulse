@@ -1,6 +1,6 @@
 # VibePulse
 
-SwiftUI + WidgetKit interview assignment skeleton.
+SwiftUI + WidgetKit interview assignment.
 
 ## What is included
 
