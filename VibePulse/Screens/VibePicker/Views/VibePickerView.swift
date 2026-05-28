@@ -14,6 +14,8 @@ struct VibePickerView: View {
         static let statusPanelBorderOpacity = 0.24
         static let statusTextOpacity = 0.76
         static let progressOpacity = 0.92
+        static let progressTrackOpacity = 0.24
+        static let progressFillHeight: CGFloat = 8
         static let captionOpacity = 0.66
         static let selectedPulseScale = 1.04
         static let selectionPulseResponse = 0.3
@@ -146,9 +148,7 @@ struct VibePickerView: View {
                 .font(.subheadline.weight(.semibold))
                 .foregroundStyle(.white.opacity(Metrics.statusTextOpacity))
 
-            ProgressView(value: displayedMilestoneProgress, total: viewModel.milestoneProgressTotal)
-                .tint(.white)
-                .opacity(Metrics.progressOpacity)
+            milestoneProgressBar
 
             Text(viewModel.nextBurstText)
                 .font(.caption.weight(.medium))
@@ -162,6 +162,21 @@ struct VibePickerView: View {
             RoundedRectangle(cornerRadius: Metrics.statusPanelCornerRadius, style: .continuous)
                 .stroke(.white.opacity(Metrics.statusPanelBorderOpacity))
         )
+    }
+
+    private var milestoneProgressBar: some View {
+        GeometryReader { proxy in
+            let progressRatio = displayedMilestoneProgress / viewModel.milestoneProgressTotal
+
+            Capsule()
+                .fill(.white.opacity(Metrics.progressTrackOpacity))
+                .overlay(alignment: .leading) {
+                    Capsule()
+                        .fill(.white.opacity(Metrics.progressOpacity))
+                        .frame(width: proxy.size.width * progressRatio)
+                }
+        }
+        .frame(height: Metrics.progressFillHeight)
     }
 
     private var footerArea: some View {
