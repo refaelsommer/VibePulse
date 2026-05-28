@@ -26,12 +26,30 @@ struct VibeCardView: View {
         static let selectionDamping = 0.68
     }
 
-    let viewModel: VibeOptionViewModel
+    let emoji: String
+    let titleText: String
+    let messageText: String
     let isSelected: Bool
+
+    init(emoji: String, titleText: String, messageText: String, isSelected: Bool) {
+        self.emoji = emoji
+        self.titleText = titleText
+        self.messageText = messageText
+        self.isSelected = isSelected
+    }
+
+    init(viewModel: VibeOptionViewModel, isSelected: Bool) {
+        self.init(
+            emoji: viewModel.emoji,
+            titleText: viewModel.titleText,
+            messageText: viewModel.messageText,
+            isSelected: isSelected
+        )
+    }
 
     var body: some View {
         VStack {
-            Text(viewModel.emoji)
+            Text(emoji)
                 .font(.largeTitle)
                 .padding()
                 .background(.white.opacity(isSelected ? Metrics.selectedEmojiBackgroundOpacity : Metrics.defaultEmojiBackgroundOpacity), in: Circle())
@@ -39,9 +57,9 @@ struct VibeCardView: View {
             Spacer()
 
             VStack {
-                Text(viewModel.titleText)
+                Text(titleText)
                     .font(.title3.weight(.heavy))
-                Text(viewModel.messageText)
+                Text(messageText)
                     .font(.caption.weight(.semibold))
                     .foregroundStyle(.white.opacity(Metrics.messageOpacity))
             }

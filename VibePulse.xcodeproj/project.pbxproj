@@ -34,6 +34,7 @@
 		100000000000000000000125 /* SplashParticle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000226 /* SplashParticle.swift */; };
 		100000000000000000000126 /* MilestoneOrbitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000227 /* MilestoneOrbitView.swift */; };
 		100000000000000000000127 /* MilestoneConfettiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000228 /* MilestoneConfettiView.swift */; };
+		100000000000000000000128 /* MilestoneProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000229 /* MilestoneProgressBar.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -89,6 +90,7 @@
 		100000000000000000000226 /* SplashParticle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashParticle.swift; sourceTree = "<group>"; };
 		100000000000000000000227 /* MilestoneOrbitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MilestoneOrbitView.swift; sourceTree = "<group>"; };
 		100000000000000000000228 /* MilestoneConfettiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MilestoneConfettiView.swift; sourceTree = "<group>"; };
+		100000000000000000000229 /* MilestoneProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MilestoneProgressBar.swift; sourceTree = "<group>"; };
 		100000000000000000000301 /* VibePulse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VibePulse.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		100000000000000000000302 /* VibePulseWidget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = VibePulseWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -126,6 +128,7 @@
 			children = (
 				100000000000000000000706 /* App */,
 				100000000000000000000707 /* Screens */,
+				100000000000000000000727 /* SharedViews */,
 				100000000000000000000708 /* Core */,
 				100000000000000000000722 /* Resources */,
 				100000000000000000000206 /* Info.plist */,
@@ -203,10 +206,7 @@
 			isa = PBXGroup;
 			children = (
 				100000000000000000000202 /* VibePickerView.swift */,
-				100000000000000000000213 /* VibeCardView.swift */,
 				100000000000000000000214 /* MilestoneBurstView.swift */,
-				100000000000000000000227 /* MilestoneOrbitView.swift */,
-				100000000000000000000228 /* MilestoneConfettiView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -323,6 +323,17 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		100000000000000000000727 /* SharedViews */ = {
+			isa = PBXGroup;
+			children = (
+				100000000000000000000213 /* VibeCardView.swift */,
+				100000000000000000000227 /* MilestoneOrbitView.swift */,
+				100000000000000000000228 /* MilestoneConfettiView.swift */,
+				100000000000000000000229 /* MilestoneProgressBar.swift */,
+			);
+			path = SharedViews;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -429,6 +440,7 @@
 				100000000000000000000113 /* MilestoneBurstView.swift in Sources */,
 				100000000000000000000126 /* MilestoneOrbitView.swift in Sources */,
 				100000000000000000000127 /* MilestoneConfettiView.swift in Sources */,
+				100000000000000000000128 /* MilestoneProgressBar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
