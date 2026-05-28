@@ -138,18 +138,21 @@ struct VibePickerView: View {
         VStack {
             Text(viewModel.selectedVibeText)
                 .font(.title2.weight(.bold))
+                .multilineTextAlignment(.center)
                 .scaleEffect(selectedPulse ? Metrics.selectedPulseScale : 1)
                 .animation(.spring(response: Metrics.selectionPulseResponse, dampingFraction: Metrics.selectionPulseDamping), value: selectedPulse)
 
             Text(viewModel.weeklyCountText)
                 .font(.subheadline.weight(.semibold))
                 .foregroundStyle(.white.opacity(Metrics.statusTextOpacity))
+                .multilineTextAlignment(.center)
 
             MilestoneProgressBar(value: displayedMilestoneProgress, total: viewModel.milestoneProgressTotal)
 
             Text(viewModel.nextBurstText)
                 .font(.caption.weight(.medium))
                 .foregroundStyle(.white.opacity(Metrics.captionOpacity))
+                .multilineTextAlignment(.center)
         }
         .foregroundStyle(.white)
         .padding()
