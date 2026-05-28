@@ -53,14 +53,19 @@ struct VibePickerView: View {
         ZStack {
             background
 
-            VStack {
-                header
-                vibeGrid
-                statusPanel
-                Spacer()
+            GeometryReader { proxy in
+                ScrollView {
+                    VStack {
+                        header
+                        vibeGrid
+                        footerArea
+                    }
+                    .safeAreaPadding(.horizontal)
+                    .padding(.vertical)
+                    .frame(minHeight: proxy.size.height)
+                }
+                .scrollIndicators(.hidden)
             }
-            .safeAreaPadding(.horizontal)
-            .padding(.vertical)
         }
         .overlay {
             if viewModel.showMilestoneBurst {
@@ -157,6 +162,15 @@ struct VibePickerView: View {
             RoundedRectangle(cornerRadius: Metrics.statusPanelCornerRadius, style: .continuous)
                 .stroke(.white.opacity(Metrics.statusPanelBorderOpacity))
         )
+    }
+
+    private var footerArea: some View {
+        VStack {
+            Spacer(minLength: .zero)
+            statusPanel
+            Spacer(minLength: .zero)
+        }
+        .frame(maxHeight: .infinity)
     }
 
     private func select(_ vibe: Vibe) {
