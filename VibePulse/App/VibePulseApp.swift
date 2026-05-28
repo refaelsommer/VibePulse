@@ -13,7 +13,7 @@ struct VibePulseApp: App {
 
     var body: some Scene {
         WindowGroup {
-            VibePickerView()
+            AppRootView()
                 .environmentObject(viewModel)
                 .onOpenURL { _ in
                     viewModel.refresh()

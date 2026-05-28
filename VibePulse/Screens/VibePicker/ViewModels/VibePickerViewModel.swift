@@ -49,18 +49,22 @@ final class VibePickerViewModel: ObservableObject {
     }
 
     var weeklyCountText: String {
-        let format = LocalizedText.value(
+        let format = LocalizedText.pluralFormat(
             "vibe_picker.weekly_count",
-            defaultValue: "You've picked %d vibes this week.",
+            count: snapshot.weeklyPickCount,
+            singularDefaultValue: "You've picked %d vibe this week.",
+            pluralDefaultValue: "You've picked %d vibes this week.",
             comment: "Weekly vibe pick count"
         )
         return String(format: format, snapshot.weeklyPickCount)
     }
 
     var nextBurstText: String {
-        let format = LocalizedText.value(
+        let format = LocalizedText.pluralFormat(
             "vibe_picker.next_burst_count",
-            defaultValue: "%d picks until the next %d-pick burst",
+            count: picksUntilNextBurst,
+            singularDefaultValue: "%d pick until the next %d-pick burst",
+            pluralDefaultValue: "%d picks until the next %d-pick burst",
             comment: "Count until the next milestone animation. First placeholder is remaining picks, second is the milestone size."
         )
         return String(format: format, picksUntilNextBurst, Metrics.picksPerMilestone)

@@ -19,7 +19,6 @@ struct VibeWidgetViewModel {
         static let descriptionDefault = "Shows your latest vibe and weekly pick count."
         static let titleDefault = "Your vibe: %@"
         static let emptyTitleDefault = "No vibe yet - pick one!"
-        static let weeklyCountDefault = "You've picked %d vibes this week."
         static let milestoneBadgeDefault = "%d-pick burst"
         static let picksPerMilestone = 7
         static let deepLinkURLString = "vibepulse://selected-vibe"
@@ -53,7 +52,13 @@ struct VibeWidgetViewModel {
     }
 
     var weeklyCountText: String {
-        let format = LocalizedText.value(Metrics.weeklyCountKey, defaultValue: Metrics.weeklyCountDefault, comment: "Widget weekly pick count")
+        let format = LocalizedText.pluralFormat(
+            Metrics.weeklyCountKey,
+            count: entry.snapshot.weeklyPickCount,
+            singularDefaultValue: "You've picked %d vibe this week.",
+            pluralDefaultValue: "You've picked %d vibes this week.",
+            comment: "Widget weekly pick count"
+        )
         return String(format: format, entry.snapshot.weeklyPickCount)
     }
 

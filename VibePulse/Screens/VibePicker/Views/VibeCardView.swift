@@ -9,15 +9,15 @@ import SwiftUI
 
 struct VibeCardView: View {
     private struct Metrics {
-        static let contentSpacing: CGFloat = 12
-        static let emojiFontSize: CGFloat = 38
-        static let emojiCircleSize: CGFloat = 54
+        static let contentSpacing: CGFloat = 10
+        static let emojiFontSize: CGFloat = 34
+        static let emojiCircleSize: CGFloat = 50
         static let selectedEmojiBackgroundOpacity = 0.28
         static let defaultEmojiBackgroundOpacity = 0.15
         static let labelSpacing: CGFloat = 3
         static let messageOpacity = 0.68
-        static let minCardHeight: CGFloat = 132
-        static let cardPadding: CGFloat = 16
+        static let minCardHeight: CGFloat = 112
+        static let cardPadding: CGFloat = 14
         static let cardCornerRadius: CGFloat = 22
         static let selectedCardBackgroundOpacity = 0.26
         static let defaultCardBackgroundOpacity = 0.13

@@ -10,12 +10,13 @@ import SwiftUI
 struct VibePickerView: View {
     private struct Metrics {
         static let screenHorizontalPadding: CGFloat = 22
-        static let screenTopPadding: CGFloat = 62
-        static let mainStackSpacing: CGFloat = 28
+        static let screenTopPadding: CGFloat = 54
+        static let screenBottomPadding: CGFloat = 28
+        static let mainStackSpacing: CGFloat = 22
         static let headerSpacing: CGFloat = 10
         static let titleFontSize: CGFloat = 44
         static let subtitleOpacity = 0.78
-        static let gridSpacing: CGFloat = 14
+        static let gridSpacing: CGFloat = 12
         static let gridColumnCount = 2
         static let statusPanelSpacing: CGFloat = 14
         static let statusPanelPadding: CGFloat = 20
@@ -69,6 +70,7 @@ struct VibePickerView: View {
             }
             .padding(.horizontal, Metrics.screenHorizontalPadding)
             .padding(.top, Metrics.screenTopPadding)
+            .padding(.bottom, Metrics.screenBottomPadding)
         }
         .overlay {
             if viewModel.showMilestoneBurst {

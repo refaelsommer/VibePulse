@@ -28,6 +28,10 @@
 		100000000000000000000119 /* LocalizedText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000219 /* LocalizedText.swift */; };
 		100000000000000000000120 /* VibeWidgetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000220 /* VibeWidgetViewModel.swift */; };
 		100000000000000000000121 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000221 /* Assets.xcassets */; };
+		100000000000000000000122 /* AppRootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000223 /* AppRootView.swift */; };
+		100000000000000000000123 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000224 /* SplashView.swift */; };
+		100000000000000000000124 /* SplashViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000225 /* SplashViewModel.swift */; };
+		100000000000000000000125 /* SplashParticle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000226 /* SplashParticle.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +81,10 @@
 		100000000000000000000220 /* VibeWidgetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VibeWidgetViewModel.swift; sourceTree = "<group>"; };
 		100000000000000000000221 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		100000000000000000000222 /* IconSource */ = {isa = PBXFileReference; lastKnownFileType = folder; path = IconSource; sourceTree = "<group>"; };
+		100000000000000000000223 /* AppRootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRootView.swift; sourceTree = "<group>"; };
+		100000000000000000000224 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
+		100000000000000000000225 /* SplashViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewModel.swift; sourceTree = "<group>"; };
+		100000000000000000000226 /* SplashParticle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashParticle.swift; sourceTree = "<group>"; };
 		100000000000000000000301 /* VibePulse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VibePulse.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		100000000000000000000302 /* VibePulseWidget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = VibePulseWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -154,6 +162,7 @@
 			isa = PBXGroup;
 			children = (
 				100000000000000000000201 /* VibePulseApp.swift */,
+				100000000000000000000223 /* AppRootView.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -161,6 +170,7 @@
 		100000000000000000000707 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				100000000000000000000723 /* Splash */,
 				100000000000000000000709 /* VibePicker */,
 			);
 			path = Screens;
@@ -273,6 +283,40 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		100000000000000000000723 /* Splash */ = {
+			isa = PBXGroup;
+			children = (
+				100000000000000000000724 /* Views */,
+				100000000000000000000725 /* ViewModels */,
+				100000000000000000000726 /* Models */,
+			);
+			path = Splash;
+			sourceTree = "<group>";
+		};
+		100000000000000000000724 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				100000000000000000000224 /* SplashView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		100000000000000000000725 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				100000000000000000000225 /* SplashViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		100000000000000000000726 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				100000000000000000000226 /* SplashParticle.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -365,12 +409,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				100000000000000000000101 /* VibePulseApp.swift in Sources */,
+				100000000000000000000122 /* AppRootView.swift in Sources */,
 				100000000000000000000102 /* VibePickerView.swift in Sources */,
 				100000000000000000000103 /* VibePickerViewModel.swift in Sources */,
 				100000000000000000000104 /* Vibe.swift in Sources */,
 				100000000000000000000108 /* VibeSnapshot.swift in Sources */,
 				100000000000000000000110 /* SharedVibeData.swift in Sources */,
 				100000000000000000000118 /* LocalizedText.swift in Sources */,
+				100000000000000000000123 /* SplashView.swift in Sources */,
+				100000000000000000000124 /* SplashViewModel.swift in Sources */,
+				100000000000000000000125 /* SplashParticle.swift in Sources */,
 				100000000000000000000112 /* VibeCardView.swift in Sources */,
 				100000000000000000000113 /* MilestoneBurstView.swift in Sources */,
 			);
