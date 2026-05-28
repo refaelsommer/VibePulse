@@ -9,29 +9,17 @@ import SwiftUI
 
 struct VibePickerView: View {
     private struct Metrics {
-        static let screenHorizontalPadding: CGFloat = 22
-        static let screenTopPadding: CGFloat = 54
-        static let screenBottomPadding: CGFloat = 28
-        static let mainStackSpacing: CGFloat = 22
-        static let headerSpacing: CGFloat = 10
-        static let titleFontSize: CGFloat = 44
         static let subtitleOpacity = 0.78
-        static let gridSpacing: CGFloat = 12
-        static let gridColumnCount = 2
-        static let statusPanelSpacing: CGFloat = 14
-        static let statusPanelPadding: CGFloat = 20
         static let statusPanelCornerRadius: CGFloat = 24
-        static let statusPanelBorderWidth: CGFloat = 1
         static let statusPanelBorderOpacity = 0.24
         static let statusTextOpacity = 0.76
         static let progressOpacity = 0.92
-        static let progressModulo = 7
         static let captionOpacity = 0.66
-        static let emptySpacerMinLength: CGFloat = 0
         static let selectedPulseScale = 1.04
-        static let unselectedScale = 1.0
         static let selectionPulseResponse = 0.3
         static let selectionPulseDamping = 0.45
+        static let progressFillResponse = 0.7
+        static let progressFillDamping = 0.82
         static let milestoneDismissResponse = 0.45
         static let milestoneDismissDamping = 0.82
         static let backgroundLoopDuration = 12.0
@@ -53,24 +41,26 @@ struct VibePickerView: View {
     @EnvironmentObject private var viewModel: VibePickerViewModel
     @State private var backgroundSpin = false
     @State private var selectedPulse = false
+    @State private var displayedMilestoneProgress = 0.0
 
     private var selectedVibe: Vibe? {
         viewModel.snapshot.selectedVibe
     }
 
+    private let gridColumns = [GridItem(.flexible()), GridItem(.flexible())]
+
     var body: some View {
         ZStack {
             background
 
-            VStack(spacing: Metrics.mainStackSpacing) {
+            VStack {
                 header
                 vibeGrid
                 statusPanel
-                Spacer(minLength: Metrics.emptySpacerMinLength)
+                Spacer()
             }
-            .padding(.horizontal, Metrics.screenHorizontalPadding)
-            .padding(.top, Metrics.screenTopPadding)
-            .padding(.bottom, Metrics.screenBottomPadding)
+            .safeAreaPadding(.horizontal)
+            .padding(.vertical)
         }
         .overlay {
             if viewModel.showMilestoneBurst {
@@ -82,8 +72,14 @@ struct VibePickerView: View {
             }
         }
         .onAppear {
+            displayedMilestoneProgress = viewModel.milestoneProgressValue
             withAnimation(.linear(duration: Metrics.backgroundLoopDuration).repeatForever(autoreverses: false)) {
                 backgroundSpin = true
+            }
+        }
+        .onChange(of: viewModel.milestoneProgressValue) { _, newValue in
+            withAnimation(.spring(response: Metrics.progressFillResponse, dampingFraction: Metrics.progressFillDamping)) {
+                displayedMilestoneProgress = newValue
             }
         }
     }
@@ -109,9 +105,9 @@ struct VibePickerView: View {
     }
 
     private var header: some View {
-        VStack(spacing: Metrics.headerSpacing) {
+        VStack {
             Text(viewModel.appTitleText)
-                .font(.system(size: Metrics.titleFontSize, weight: .black, design: .rounded))
+                .font(.largeTitle.weight(.black))
                 .foregroundStyle(.white)
 
             Text(viewModel.appSubtitleText)
@@ -122,7 +118,7 @@ struct VibePickerView: View {
     }
 
     private var vibeGrid: some View {
-        LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: Metrics.gridColumnCount), spacing: Metrics.gridSpacing) {
+        LazyVGrid(columns: gridColumns) {
             ForEach(viewModel.options) { option in
                 Button {
                     select(option.vibe)
@@ -135,17 +131,17 @@ struct VibePickerView: View {
     }
 
     private var statusPanel: some View {
-        VStack(spacing: Metrics.statusPanelSpacing) {
+        VStack {
             Text(viewModel.selectedVibeText)
                 .font(.title2.weight(.bold))
-                .scaleEffect(selectedPulse ? Metrics.selectedPulseScale : Metrics.unselectedScale)
+                .scaleEffect(selectedPulse ? Metrics.selectedPulseScale : 1)
                 .animation(.spring(response: Metrics.selectionPulseResponse, dampingFraction: Metrics.selectionPulseDamping), value: selectedPulse)
 
             Text(viewModel.weeklyCountText)
                 .font(.subheadline.weight(.semibold))
                 .foregroundStyle(.white.opacity(Metrics.statusTextOpacity))
 
-            ProgressView(value: Double(viewModel.snapshot.totalPickCount % Metrics.progressModulo), total: Double(Metrics.progressModulo))
+            ProgressView(value: displayedMilestoneProgress, total: viewModel.milestoneProgressTotal)
                 .tint(.white)
                 .opacity(Metrics.progressOpacity)
 
@@ -154,12 +150,12 @@ struct VibePickerView: View {
                 .foregroundStyle(.white.opacity(Metrics.captionOpacity))
         }
         .foregroundStyle(.white)
-        .padding(Metrics.statusPanelPadding)
+        .padding()
         .frame(maxWidth: .infinity)
         .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: Metrics.statusPanelCornerRadius, style: .continuous))
         .overlay(
             RoundedRectangle(cornerRadius: Metrics.statusPanelCornerRadius, style: .continuous)
-                .stroke(.white.opacity(Metrics.statusPanelBorderOpacity), lineWidth: Metrics.statusPanelBorderWidth)
+                .stroke(.white.opacity(Metrics.statusPanelBorderOpacity))
         )
     }
 

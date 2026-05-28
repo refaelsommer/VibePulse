@@ -9,30 +9,19 @@ import SwiftUI
 
 struct VibeCardView: View {
     private struct Metrics {
-        static let contentSpacing: CGFloat = 10
-        static let emojiFontSize: CGFloat = 34
-        static let emojiCircleSize: CGFloat = 50
         static let selectedEmojiBackgroundOpacity = 0.28
         static let defaultEmojiBackgroundOpacity = 0.15
-        static let labelSpacing: CGFloat = 3
         static let messageOpacity = 0.68
-        static let minCardHeight: CGFloat = 112
-        static let cardPadding: CGFloat = 14
         static let cardCornerRadius: CGFloat = 22
         static let selectedCardBackgroundOpacity = 0.26
         static let defaultCardBackgroundOpacity = 0.13
         static let selectedBorderOpacity = 0.82
         static let defaultBorderOpacity = 0.18
         static let selectedBorderWidth: CGFloat = 2
-        static let defaultBorderWidth: CGFloat = 1
-        static let selectedScale = 1.04
-        static let defaultScale = 1.0
         static let selectedShadowOpacity = 0.24
         static let defaultShadowOpacity = 0.10
         static let selectedShadowRadius: CGFloat = 18
-        static let defaultShadowRadius: CGFloat = 8
         static let selectedShadowYOffset: CGFloat = 12
-        static let defaultShadowYOffset: CGFloat = 5
         static let selectionResponse = 0.34
         static let selectionDamping = 0.68
     }
@@ -41,34 +30,54 @@ struct VibeCardView: View {
     let isSelected: Bool
 
     var body: some View {
-        VStack(alignment: .leading, spacing: Metrics.contentSpacing) {
+        VStack {
             Text(viewModel.emoji)
-                .font(.system(size: Metrics.emojiFontSize))
-                .frame(width: Metrics.emojiCircleSize, height: Metrics.emojiCircleSize)
+                .font(.largeTitle)
+                .padding()
                 .background(.white.opacity(isSelected ? Metrics.selectedEmojiBackgroundOpacity : Metrics.defaultEmojiBackgroundOpacity), in: Circle())
 
-            VStack(alignment: .leading, spacing: Metrics.labelSpacing) {
+            Spacer()
+
+            VStack {
                 Text(viewModel.titleText)
                     .font(.title3.weight(.heavy))
                 Text(viewModel.messageText)
                     .font(.caption.weight(.semibold))
                     .foregroundStyle(.white.opacity(Metrics.messageOpacity))
             }
+            .multilineTextAlignment(.center)
         }
         .foregroundStyle(.white)
-        .frame(maxWidth: .infinity, minHeight: Metrics.minCardHeight, alignment: .leading)
-        .padding(Metrics.cardPadding)
-        .background(.white.opacity(isSelected ? Metrics.selectedCardBackgroundOpacity : Metrics.defaultCardBackgroundOpacity), in: RoundedRectangle(cornerRadius: Metrics.cardCornerRadius, style: .continuous))
+        .frame(maxWidth: .infinity)
+        .aspectRatio(1, contentMode: .fit)
+        .padding()
+        .background(cardBackground, in: cardShape)
         .overlay(
-            RoundedRectangle(cornerRadius: Metrics.cardCornerRadius, style: .continuous)
-                .stroke(.white.opacity(isSelected ? Metrics.selectedBorderOpacity : Metrics.defaultBorderOpacity), lineWidth: isSelected ? Metrics.selectedBorderWidth : Metrics.defaultBorderWidth)
+            cardShape
+                .stroke(.white.opacity(borderOpacity), lineWidth: isSelected ? Metrics.selectedBorderWidth : Metrics.selectedBorderWidth / 2)
         )
-        .scaleEffect(isSelected ? Metrics.selectedScale : Metrics.defaultScale)
+        .contentShape(cardShape)
         .shadow(
-            color: .black.opacity(isSelected ? Metrics.selectedShadowOpacity : Metrics.defaultShadowOpacity),
-            radius: isSelected ? Metrics.selectedShadowRadius : Metrics.defaultShadowRadius,
-            y: isSelected ? Metrics.selectedShadowYOffset : Metrics.defaultShadowYOffset
+            color: .black.opacity(shadowOpacity),
+            radius: isSelected ? Metrics.selectedShadowRadius : Metrics.selectedShadowRadius / 2,
+            y: isSelected ? Metrics.selectedShadowYOffset : Metrics.selectedShadowYOffset / 2
         )
         .animation(.spring(response: Metrics.selectionResponse, dampingFraction: Metrics.selectionDamping), value: isSelected)
+    }
+
+    private var cardBackground: some ShapeStyle {
+        .white.opacity(isSelected ? Metrics.selectedCardBackgroundOpacity : Metrics.defaultCardBackgroundOpacity)
+    }
+
+    private var borderOpacity: Double {
+        isSelected ? Metrics.selectedBorderOpacity : Metrics.defaultBorderOpacity
+    }
+
+    private var shadowOpacity: Double {
+        isSelected ? Metrics.selectedShadowOpacity : Metrics.defaultShadowOpacity
+    }
+
+    private var cardShape: RoundedRectangle {
+        RoundedRectangle(cornerRadius: Metrics.cardCornerRadius, style: .continuous)
     }
 }

@@ -70,6 +70,16 @@ final class VibePickerViewModel: ObservableObject {
         return String(format: format, picksUntilNextBurst, Metrics.picksPerMilestone)
     }
 
+    var milestoneProgressValue: Double {
+        guard snapshot.totalPickCount > .zero else { return .zero }
+        let currentProgress = snapshot.totalPickCount % Metrics.picksPerMilestone
+        return Double(currentProgress == .zero ? Metrics.picksPerMilestone : currentProgress)
+    }
+
+    var milestoneProgressTotal: Double {
+        Double(Metrics.picksPerMilestone)
+    }
+
     init() {
         snapshot = SharedVibeData.load()
     }

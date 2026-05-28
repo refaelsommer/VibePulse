@@ -9,41 +9,84 @@ import SwiftUI
 
 struct VibeWidgetCelebrationView: View {
     private struct Metrics {
-        static let particleCount = 10
-        static let particleSymbols = ["✦", "✹", "✺", "✧"]
-        static let particleBaseSize: CGFloat = 20
-        static let particleSizeStep: CGFloat = 9
-        static let particleSizeCycle = 3
-        static let baseParticleOpacity = 0.24
-        static let particleOpacityStep = 0.1
+        static let particleCount = 34
+        static let particleColors = [
+            Color.red,
+            Color.blue,
+            Color.green,
+            Color.yellow,
+            Color.orange,
+            Color.teal,
+            Color.pink
+        ]
+        static let particleWidths: [CGFloat] = [4, 5, 6, 3]
+        static let particleHeights: [CGFloat] = [10, 12, 8, 6]
+        static let particleCornerRadius: CGFloat = 1.5
+        static let baseParticleOpacity = 0.58
+        static let particleOpacityStep = 0.08
         static let particleOpacityCycle = 4
-        static let xIndexMultiplier = 31
-        static let xPhaseMultiplier = 34
-        static let yIndexMultiplier = 47
-        static let yPhaseMultiplier = 24
-        static let offsetModulo: CGFloat = 170
-        static let xOffsetBias: CGFloat = 48
-        static let yOffsetBias: CGFloat = 42
-        static let phaseScaleStep = 0.05
-        static let restingScale = 1.0
+        static let edgeInsetRatio: CGFloat = 0.08
+        static let usableAreaRatio: CGFloat = 0.84
+        static let xStepMultiplier = 37
+        static let xPhaseMultiplier = 19
+        static let yStepMultiplier = 53
+        static let yPhaseMultiplier = 23
+        static let positionModulo = 100
+        static let rotationIndexMultiplier = 31.0
+        static let rotationPhaseMultiplier = 24.0
     }
 
     let entry: VibeWidgetEntry
 
     var body: some View {
         if entry.isCelebrationFrame {
-            ZStack {
+            GeometryReader { proxy in
                 ForEach(0..<Metrics.particleCount, id: \.self) { index in
-                    Text(Metrics.particleSymbols[index % Metrics.particleSymbols.count])
-                        .font(.system(size: Metrics.particleBaseSize + CGFloat(index % Metrics.particleSizeCycle) * Metrics.particleSizeStep, weight: .heavy))
-                        .foregroundStyle(.white.opacity(Metrics.baseParticleOpacity + Double((index + entry.phase) % Metrics.particleOpacityCycle) * Metrics.particleOpacityStep))
-                        .offset(
-                            x: CGFloat(index * Metrics.xIndexMultiplier + entry.phase * Metrics.xPhaseMultiplier).truncatingRemainder(dividingBy: Metrics.offsetModulo) - Metrics.xOffsetBias,
-                            y: CGFloat(index * Metrics.yIndexMultiplier + entry.phase * Metrics.yPhaseMultiplier).truncatingRemainder(dividingBy: Metrics.offsetModulo) - Metrics.yOffsetBias
+                    confettiPiece(for: index)
+                        .position(
+                            x: xPosition(for: index, width: proxy.size.width),
+                            y: yPosition(for: index, height: proxy.size.height)
                         )
                 }
             }
-            .scaleEffect(Metrics.restingScale + CGFloat(entry.phase) * Metrics.phaseScaleStep)
         }
+    }
+
+    private func confettiPiece(for index: Int) -> some View {
+        let color = Metrics.particleColors[index % Metrics.particleColors.count]
+        let width = Metrics.particleWidths[index % Metrics.particleWidths.count]
+        let height = Metrics.particleHeights[index % Metrics.particleHeights.count]
+        let opacity = Metrics.baseParticleOpacity + Double((index + entry.phase) % Metrics.particleOpacityCycle) * Metrics.particleOpacityStep
+        let rotation = Double(index) * Metrics.rotationIndexMultiplier + Double(entry.phase) * Metrics.rotationPhaseMultiplier
+
+        return RoundedRectangle(cornerRadius: Metrics.particleCornerRadius, style: .continuous)
+            .fill(color)
+            .frame(width: width, height: height)
+            .opacity(opacity)
+            .rotationEffect(.degrees(rotation))
+    }
+
+    private func xPosition(for index: Int, width: CGFloat) -> CGFloat {
+        let ratio = placementRatio(
+            for: index,
+            indexMultiplier: Metrics.xStepMultiplier,
+            phaseMultiplier: Metrics.xPhaseMultiplier
+        )
+        return width * (Metrics.edgeInsetRatio + ratio * Metrics.usableAreaRatio)
+    }
+
+    private func yPosition(for index: Int, height: CGFloat) -> CGFloat {
+        let ratio = placementRatio(
+            for: index,
+            indexMultiplier: Metrics.yStepMultiplier,
+            phaseMultiplier: Metrics.yPhaseMultiplier
+        )
+        return height * (Metrics.edgeInsetRatio + ratio * Metrics.usableAreaRatio)
+    }
+
+    private func placementRatio(for index: Int, indexMultiplier: Int, phaseMultiplier: Int) -> CGFloat {
+        let shiftedValue = index * indexMultiplier + entry.phase * phaseMultiplier
+        let wrappedValue = shiftedValue % Metrics.positionModulo
+        return CGFloat(wrappedValue) / CGFloat(Metrics.positionModulo)
     }
 }
