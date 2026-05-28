@@ -60,6 +60,14 @@ final class VibePickerViewModel: ObservableObject {
     }
 
     var nextBurstText: String {
+        if snapshot.totalPickCount == .zero {
+            return LocalizedText.value(
+                "vibe_picker.first_pick_footer",
+                defaultValue: "Pick your first vibe to start the pulse.",
+                comment: "Shown in the app footer before the user picks any vibe."
+            )
+        }
+
         if isMilestonePick {
             let format = LocalizedText.value(
                 "vibe_picker.milestone_footer",
