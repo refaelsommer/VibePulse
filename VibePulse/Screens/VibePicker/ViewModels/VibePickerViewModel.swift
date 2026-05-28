@@ -60,6 +60,15 @@ final class VibePickerViewModel: ObservableObject {
     }
 
     var nextBurstText: String {
+        if isMilestonePick {
+            let format = LocalizedText.value(
+                "vibe_picker.milestone_footer",
+                defaultValue: "Boom! %d-pick burst unlocked - your widget is celebrating.",
+                comment: "Shown in the app footer when the user hits a milestone pick."
+            )
+            return String(format: format, Metrics.picksPerMilestone)
+        }
+
         let format = LocalizedText.pluralFormat(
             "vibe_picker.next_burst_count",
             count: picksUntilNextBurst,
@@ -109,6 +118,10 @@ final class VibePickerViewModel: ObservableObject {
     private var picksUntilNextBurst: Int {
         let currentProgress = snapshot.totalPickCount % Metrics.picksPerMilestone
         return Metrics.picksPerMilestone - (currentProgress == 0 ? Metrics.picksPerMilestone : currentProgress)
+    }
+
+    private var isMilestonePick: Bool {
+        snapshot.totalPickCount > .zero && snapshot.totalPickCount % Metrics.picksPerMilestone == .zero
     }
 }
 
