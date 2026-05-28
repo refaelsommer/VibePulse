@@ -13,7 +13,6 @@ struct VibeWidgetProvider: TimelineProvider {
         static let restingPhase = -1
         static let firstCelebrationPhase = 0
         static let celebrationFrameCount = 6
-        static let celebrationFrameIntervalMinutes = 1
         static let celebrationWindowMinutes = 8
         static let refreshIntervalHours = 1
     }
@@ -41,7 +40,7 @@ struct VibeWidgetProvider: TimelineProvider {
     private func celebrationEntries(for snapshot: VibeSnapshot, now: Date) -> [VibeWidgetEntry] {
         let celebrationFrames = (0..<Metrics.celebrationFrameCount).map { phase in
             VibeWidgetEntry(
-                date: Calendar.current.date(byAdding: .minute, value: phase * Metrics.celebrationFrameIntervalMinutes, to: now) ?? now,
+                date: Calendar.current.date(byAdding: .minute, value: phase, to: now) ?? now,
                 snapshot: snapshot,
                 phase: phase
             )
@@ -49,7 +48,7 @@ struct VibeWidgetProvider: TimelineProvider {
 
         let restingDate = Calendar.current.date(
             byAdding: .minute,
-            value: Metrics.celebrationFrameCount * Metrics.celebrationFrameIntervalMinutes,
+            value: Metrics.celebrationFrameCount,
             to: now
         ) ?? now
 
