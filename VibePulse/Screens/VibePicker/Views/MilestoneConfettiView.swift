@@ -11,7 +11,6 @@ struct MilestoneConfettiView: View {
     private struct Metrics {
         static let particleCount = 96
         static let originXRatio: CGFloat = 0.5
-        static let originYRatio: CGFloat = 0.94
         static let originSpreadX: CGFloat = 44
         static let originSpreadY: CGFloat = 18
         static let sideExitDistance: CGFloat = 96
@@ -96,7 +95,7 @@ struct MilestoneConfettiView: View {
 
         return CGPoint(
             x: size.width * Metrics.originXRatio + xJitter * Metrics.originSpreadX,
-            y: size.height * Metrics.originYRatio + yJitter * Metrics.originSpreadY
+            y: size.height + height(for: index) + Metrics.originSpreadY + yJitter * Metrics.originSpreadY
         )
     }
 
