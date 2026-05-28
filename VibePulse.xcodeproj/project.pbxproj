@@ -1,0 +1,652 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		100000000000000000000101 /* VibePulseApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000201 /* VibePulseApp.swift */; };
+		100000000000000000000102 /* VibePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000202 /* VibePickerView.swift */; };
+		100000000000000000000103 /* VibePickerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000203 /* VibePickerViewModel.swift */; };
+		100000000000000000000104 /* Vibe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000204 /* Vibe.swift */; };
+		100000000000000000000105 /* Vibe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000204 /* Vibe.swift */; };
+		100000000000000000000106 /* VibePulseWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000205 /* VibePulseWidget.swift */; };
+		100000000000000000000107 /* VibePulseWidget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 100000000000000000000302 /* VibePulseWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		100000000000000000000108 /* VibeSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000211 /* VibeSnapshot.swift */; };
+		100000000000000000000109 /* VibeSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000211 /* VibeSnapshot.swift */; };
+		100000000000000000000110 /* SharedVibeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000212 /* SharedVibeData.swift */; };
+		100000000000000000000111 /* SharedVibeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000212 /* SharedVibeData.swift */; };
+		100000000000000000000112 /* VibeCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000213 /* VibeCardView.swift */; };
+		100000000000000000000113 /* MilestoneBurstView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000214 /* MilestoneBurstView.swift */; };
+		100000000000000000000114 /* VibeWidgetEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000215 /* VibeWidgetEntry.swift */; };
+		100000000000000000000115 /* VibeWidgetProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000216 /* VibeWidgetProvider.swift */; };
+		100000000000000000000116 /* VibePulseWidgetEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000217 /* VibePulseWidgetEntryView.swift */; };
+		100000000000000000000117 /* VibeWidgetCelebrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000218 /* VibeWidgetCelebrationView.swift */; };
+		100000000000000000000118 /* LocalizedText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000219 /* LocalizedText.swift */; };
+		100000000000000000000119 /* LocalizedText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000219 /* LocalizedText.swift */; };
+		100000000000000000000120 /* VibeWidgetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000220 /* VibeWidgetViewModel.swift */; };
+		100000000000000000000121 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000221 /* Assets.xcassets */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		100000000000000000000401 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 100000000000000000000001 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 100000000000000000000012;
+			remoteInfo = VibePulseWidget;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		100000000000000000000501 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				100000000000000000000107 /* VibePulseWidget.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		100000000000000000000201 /* VibePulseApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VibePulseApp.swift; sourceTree = "<group>"; };
+		100000000000000000000202 /* VibePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VibePickerView.swift; sourceTree = "<group>"; };
+		100000000000000000000203 /* VibePickerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VibePickerViewModel.swift; sourceTree = "<group>"; };
+		100000000000000000000204 /* Vibe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vibe.swift; sourceTree = "<group>"; };
+		100000000000000000000205 /* VibePulseWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VibePulseWidget.swift; sourceTree = "<group>"; };
+		100000000000000000000206 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		100000000000000000000207 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		100000000000000000000208 /* VibePulse.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = VibePulse.entitlements; sourceTree = "<group>"; };
+		100000000000000000000209 /* VibePulseWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = VibePulseWidget.entitlements; sourceTree = "<group>"; };
+		100000000000000000000210 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		100000000000000000000211 /* VibeSnapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VibeSnapshot.swift; sourceTree = "<group>"; };
+		100000000000000000000212 /* SharedVibeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedVibeData.swift; sourceTree = "<group>"; };
+		100000000000000000000213 /* VibeCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VibeCardView.swift; sourceTree = "<group>"; };
+		100000000000000000000214 /* MilestoneBurstView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MilestoneBurstView.swift; sourceTree = "<group>"; };
+		100000000000000000000215 /* VibeWidgetEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VibeWidgetEntry.swift; sourceTree = "<group>"; };
+		100000000000000000000216 /* VibeWidgetProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VibeWidgetProvider.swift; sourceTree = "<group>"; };
+		100000000000000000000217 /* VibePulseWidgetEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VibePulseWidgetEntryView.swift; sourceTree = "<group>"; };
+		100000000000000000000218 /* VibeWidgetCelebrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VibeWidgetCelebrationView.swift; sourceTree = "<group>"; };
+		100000000000000000000219 /* LocalizedText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizedText.swift; sourceTree = "<group>"; };
+		100000000000000000000220 /* VibeWidgetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VibeWidgetViewModel.swift; sourceTree = "<group>"; };
+		100000000000000000000221 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		100000000000000000000222 /* IconSource */ = {isa = PBXFileReference; lastKnownFileType = folder; path = IconSource; sourceTree = "<group>"; };
+		100000000000000000000301 /* VibePulse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VibePulse.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		100000000000000000000302 /* VibePulseWidget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = VibePulseWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		100000000000000000000601 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		100000000000000000000602 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		100000000000000000000701 = {
+			isa = PBXGroup;
+			children = (
+				100000000000000000000702 /* VibePulse */,
+				100000000000000000000703 /* VibePulseWidget */,
+				100000000000000000000705 /* Products */,
+				100000000000000000000210 /* README.md */,
+			);
+			sourceTree = "<group>";
+		};
+		100000000000000000000702 /* VibePulse */ = {
+			isa = PBXGroup;
+			children = (
+				100000000000000000000706 /* App */,
+				100000000000000000000707 /* Screens */,
+				100000000000000000000708 /* Core */,
+				100000000000000000000722 /* Resources */,
+				100000000000000000000206 /* Info.plist */,
+				100000000000000000000208 /* VibePulse.entitlements */,
+			);
+			path = VibePulse;
+			sourceTree = "<group>";
+		};
+		100000000000000000000703 /* VibePulseWidget */ = {
+			isa = PBXGroup;
+			children = (
+				100000000000000000000715 /* Widgets */,
+				100000000000000000000207 /* Info.plist */,
+				100000000000000000000209 /* VibePulseWidget.entitlements */,
+			);
+			path = VibePulseWidget;
+			sourceTree = "<group>";
+		};
+		100000000000000000000704 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				100000000000000000000204 /* Vibe.swift */,
+				100000000000000000000211 /* VibeSnapshot.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		100000000000000000000705 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				100000000000000000000301 /* VibePulse.app */,
+				100000000000000000000302 /* VibePulseWidget.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		100000000000000000000706 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				100000000000000000000201 /* VibePulseApp.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		100000000000000000000707 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				100000000000000000000709 /* VibePicker */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		100000000000000000000708 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				100000000000000000000714 /* Persistence */,
+				100000000000000000000721 /* Localization */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		100000000000000000000709 /* VibePicker */ = {
+			isa = PBXGroup;
+			children = (
+				100000000000000000000710 /* Views */,
+				100000000000000000000711 /* ViewModels */,
+				100000000000000000000704 /* Models */,
+			);
+			path = VibePicker;
+			sourceTree = "<group>";
+		};
+		100000000000000000000710 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				100000000000000000000202 /* VibePickerView.swift */,
+				100000000000000000000213 /* VibeCardView.swift */,
+				100000000000000000000214 /* MilestoneBurstView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		100000000000000000000711 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				100000000000000000000203 /* VibePickerViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		100000000000000000000714 /* Persistence */ = {
+			isa = PBXGroup;
+			children = (
+				100000000000000000000212 /* SharedVibeData.swift */,
+			);
+			path = Persistence;
+			sourceTree = "<group>";
+		};
+		100000000000000000000715 /* Widgets */ = {
+			isa = PBXGroup;
+			children = (
+				100000000000000000000716 /* VibePulse */,
+			);
+			path = Widgets;
+			sourceTree = "<group>";
+		};
+		100000000000000000000716 /* VibePulse */ = {
+			isa = PBXGroup;
+			children = (
+				100000000000000000000205 /* VibePulseWidget.swift */,
+				100000000000000000000717 /* Views */,
+				100000000000000000000718 /* ViewModels */,
+				100000000000000000000719 /* Models */,
+			);
+			path = VibePulse;
+			sourceTree = "<group>";
+		};
+		100000000000000000000717 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				100000000000000000000217 /* VibePulseWidgetEntryView.swift */,
+				100000000000000000000218 /* VibeWidgetCelebrationView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		100000000000000000000718 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				100000000000000000000216 /* VibeWidgetProvider.swift */,
+				100000000000000000000220 /* VibeWidgetViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		100000000000000000000719 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				100000000000000000000215 /* VibeWidgetEntry.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		100000000000000000000721 /* Localization */ = {
+			isa = PBXGroup;
+			children = (
+				100000000000000000000219 /* LocalizedText.swift */,
+			);
+			path = Localization;
+			sourceTree = "<group>";
+		};
+		100000000000000000000722 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				100000000000000000000221 /* Assets.xcassets */,
+				100000000000000000000222 /* IconSource */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		100000000000000000000011 /* VibePulse */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 100000000000000000000901 /* Build configuration list for PBXNativeTarget "VibePulse" */;
+			buildPhases = (
+				100000000000000000000801 /* Sources */,
+				100000000000000000000601 /* Frameworks */,
+				100000000000000000000803 /* Resources */,
+				100000000000000000000501 /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				100000000000000000000402 /* PBXTargetDependency */,
+			);
+			name = VibePulse;
+			productName = VibePulse;
+			productReference = 100000000000000000000301 /* VibePulse.app */;
+			productType = "com.apple.product-type.application";
+		};
+		100000000000000000000012 /* VibePulseWidget */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 100000000000000000000902 /* Build configuration list for PBXNativeTarget "VibePulseWidget" */;
+			buildPhases = (
+				100000000000000000000802 /* Sources */,
+				100000000000000000000602 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = VibePulseWidget;
+			productName = VibePulseWidget;
+			productReference = 100000000000000000000302 /* VibePulseWidget.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		100000000000000000000001 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1540;
+				LastUpgradeCheck = 1540;
+				TargetAttributes = {
+					100000000000000000000011 = {
+						CreatedOnToolsVersion = 15.4;
+					};
+					100000000000000000000012 = {
+						CreatedOnToolsVersion = 15.4;
+					};
+				};
+			};
+			buildConfigurationList = 100000000000000000000900 /* Build configuration list for PBXProject "VibePulse" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 100000000000000000000701;
+			productRefGroup = 100000000000000000000705 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				100000000000000000000011 /* VibePulse */,
+				100000000000000000000012 /* VibePulseWidget */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		100000000000000000000803 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				100000000000000000000121 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		100000000000000000000801 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				100000000000000000000101 /* VibePulseApp.swift in Sources */,
+				100000000000000000000102 /* VibePickerView.swift in Sources */,
+				100000000000000000000103 /* VibePickerViewModel.swift in Sources */,
+				100000000000000000000104 /* Vibe.swift in Sources */,
+				100000000000000000000108 /* VibeSnapshot.swift in Sources */,
+				100000000000000000000110 /* SharedVibeData.swift in Sources */,
+				100000000000000000000118 /* LocalizedText.swift in Sources */,
+				100000000000000000000112 /* VibeCardView.swift in Sources */,
+				100000000000000000000113 /* MilestoneBurstView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		100000000000000000000802 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				100000000000000000000106 /* VibePulseWidget.swift in Sources */,
+				100000000000000000000105 /* Vibe.swift in Sources */,
+				100000000000000000000109 /* VibeSnapshot.swift in Sources */,
+				100000000000000000000111 /* SharedVibeData.swift in Sources */,
+				100000000000000000000119 /* LocalizedText.swift in Sources */,
+				100000000000000000000114 /* VibeWidgetEntry.swift in Sources */,
+				100000000000000000000115 /* VibeWidgetProvider.swift in Sources */,
+				100000000000000000000120 /* VibeWidgetViewModel.swift in Sources */,
+				100000000000000000000116 /* VibePulseWidgetEntryView.swift in Sources */,
+				100000000000000000000117 /* VibeWidgetCelebrationView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		100000000000000000000402 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 100000000000000000000012 /* VibePulseWidget */;
+			targetProxy = 100000000000000000000401 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		100000000000000000001001 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		100000000000000000001002 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		100000000000000000001011 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = VibePulse/VibePulse.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "";
+				DEVELOPMENT_TEAM = C8DBCHLGM7;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = VibePulse/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.refaelsommer.VibePulse;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		100000000000000000001012 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = VibePulse/VibePulse.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "";
+				DEVELOPMENT_TEAM = C8DBCHLGM7;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = VibePulse/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.refaelsommer.VibePulse;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		100000000000000000001021 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = VibePulseWidget/VibePulseWidget.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = C8DBCHLGM7;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = VibePulseWidget/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.refaelsommer.VibePulse.VibePulseWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		100000000000000000001022 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = VibePulseWidget/VibePulseWidget.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = C8DBCHLGM7;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = VibePulseWidget/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.refaelsommer.VibePulse.VibePulseWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		100000000000000000000900 /* Build configuration list for PBXProject "VibePulse" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				100000000000000000001001 /* Debug */,
+				100000000000000000001002 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		100000000000000000000901 /* Build configuration list for PBXNativeTarget "VibePulse" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				100000000000000000001011 /* Debug */,
+				100000000000000000001012 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		100000000000000000000902 /* Build configuration list for PBXNativeTarget "VibePulseWidget" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				100000000000000000001021 /* Debug */,
+				100000000000000000001022 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 100000000000000000000001 /* Project object */;
+}
