@@ -13,7 +13,6 @@ import WidgetKit
 final class VibePickerViewModel: ObservableObject {
     private struct Metrics {
         static let pickIncrement = 1
-        static let picksPerMilestone = 7
     }
 
     @Published private(set) var snapshot: VibeSnapshot
@@ -74,7 +73,7 @@ final class VibePickerViewModel: ObservableObject {
                 defaultValue: "Boom! %d-pick burst unlocked - your widget is celebrating.",
                 comment: "Shown in the app footer when the user hits a milestone pick."
             )
-            return String(format: format, Metrics.picksPerMilestone)
+            return String(format: format, AppConfig.Milestones.picksPerBurst)
         }
 
         let format = LocalizedText.pluralFormat(
@@ -84,17 +83,17 @@ final class VibePickerViewModel: ObservableObject {
             pluralDefaultValue: "%d picks until the next %d-pick burst",
             comment: "Count until the next milestone animation. First placeholder is remaining picks, second is the milestone size."
         )
-        return String(format: format, picksUntilNextBurst, Metrics.picksPerMilestone)
+        return String(format: format, picksUntilNextBurst, AppConfig.Milestones.picksPerBurst)
     }
 
     var milestoneProgressValue: Double {
         guard snapshot.totalPickCount > .zero else { return .zero }
-        let currentProgress = snapshot.totalPickCount % Metrics.picksPerMilestone
-        return Double(currentProgress == .zero ? Metrics.picksPerMilestone : currentProgress)
+        let currentProgress = snapshot.totalPickCount % AppConfig.Milestones.picksPerBurst
+        return Double(currentProgress == .zero ? AppConfig.Milestones.picksPerBurst : currentProgress)
     }
 
     var milestoneProgressTotal: Double {
-        Double(Metrics.picksPerMilestone)
+        Double(AppConfig.Milestones.picksPerBurst)
     }
 
     init() {
@@ -109,14 +108,14 @@ final class VibePickerViewModel: ObservableObject {
         next.pickDates.append(Date())
         next = SharedVibeData.normalized(next)
 
-        if next.totalPickCount % Metrics.picksPerMilestone == 0 {
+        if next.totalPickCount % AppConfig.Milestones.picksPerBurst == 0 {
             next.lastMilestonePick = next.totalPickCount
             showMilestoneBurst = true
         }
 
         snapshot = next
         SharedVibeData.save(next)
-        WidgetCenter.shared.reloadAllTimelines()
+        WidgetCenter.shared.reloadTimelines(ofKind: AppConfig.Identifiers.widgetKind)
     }
 
     func refresh() {
@@ -124,12 +123,12 @@ final class VibePickerViewModel: ObservableObject {
     }
 
     private var picksUntilNextBurst: Int {
-        let currentProgress = snapshot.totalPickCount % Metrics.picksPerMilestone
-        return Metrics.picksPerMilestone - (currentProgress == 0 ? Metrics.picksPerMilestone : currentProgress)
+        let currentProgress = snapshot.totalPickCount % AppConfig.Milestones.picksPerBurst
+        return AppConfig.Milestones.picksPerBurst - (currentProgress == 0 ? AppConfig.Milestones.picksPerBurst : currentProgress)
     }
 
     private var isMilestonePick: Bool {
-        snapshot.totalPickCount > .zero && snapshot.totalPickCount % Metrics.picksPerMilestone == .zero
+        snapshot.totalPickCount > .zero && snapshot.totalPickCount % AppConfig.Milestones.picksPerBurst == .zero
     }
 }
 
@@ -151,7 +150,8 @@ struct MilestoneBurstViewModel {
     static let standard = MilestoneBurstViewModel()
 
     var streakNumberText: String {
-        LocalizedText.value("milestone.streak_number", defaultValue: "7", comment: "Milestone streak number")
+        let defaultValue = "\(AppConfig.Milestones.picksPerBurst)"
+        return LocalizedText.value("milestone.streak_number", defaultValue: defaultValue, comment: "Milestone streak number")
     }
 
     var titleText: String {

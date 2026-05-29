@@ -25,8 +25,6 @@ struct VibeWidgetViewModel {
         static let emptyTitleDefault = "No vibe yet - pick one!"
         static let compactEmptyTitleDefault = "Pick one!"
         static let milestoneBadgeDefault = "%d-pick burst"
-        static let picksPerMilestone = 7
-        static let deepLinkURLString = "vibepulse://selected-vibe"
     }
 
     let entry: VibeWidgetEntry
@@ -95,7 +93,7 @@ struct VibeWidgetViewModel {
             defaultValue: Metrics.milestoneBadgeDefault,
             comment: "Widget milestone badge. Placeholder is the milestone size."
         )
-        return String(format: format, Metrics.picksPerMilestone)
+        return String(format: format, AppConfig.Milestones.picksPerBurst)
     }
 
     var countBadgeText: String {
@@ -103,6 +101,6 @@ struct VibeWidgetViewModel {
     }
 
     var deepLinkURL: URL? {
-        URL(string: Metrics.deepLinkURLString)
+        AppConfig.Identifiers.selectedVibeDeepLinkURL
     }
 }

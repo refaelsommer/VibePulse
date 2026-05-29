@@ -37,6 +37,8 @@
 		100000000000000000000128 /* CapsuleProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000229 /* CapsuleProgressBar.swift */; };
 		100000000000000000000129 /* VibePulseDesign.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000230 /* VibePulseDesign.swift */; };
 		100000000000000000000130 /* VibePulseDesign.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000230 /* VibePulseDesign.swift */; };
+		100000000000000000000131 /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000231 /* AppConfig.swift */; };
+		100000000000000000000132 /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000231 /* AppConfig.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -94,6 +96,7 @@
 		100000000000000000000228 /* ConfettiBurstView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfettiBurstView.swift; sourceTree = "<group>"; };
 		100000000000000000000229 /* CapsuleProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapsuleProgressBar.swift; sourceTree = "<group>"; };
 		100000000000000000000230 /* VibePulseDesign.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VibePulseDesign.swift; sourceTree = "<group>"; };
+		100000000000000000000231 /* AppConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfig.swift; sourceTree = "<group>"; };
 		100000000000000000000301 /* VibePulse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VibePulse.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		100000000000000000000302 /* VibePulseWidget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = VibePulseWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -192,6 +195,7 @@
 		100000000000000000000708 /* Core */ = {
 			isa = PBXGroup;
 				children = (
+					100000000000000000000729 /* AppConfig */,
 					100000000000000000000704 /* Models */,
 					100000000000000000000714 /* Persistence */,
 					100000000000000000000721 /* Localization */,
@@ -330,6 +334,14 @@
 			path = Design;
 			sourceTree = "<group>";
 		};
+		100000000000000000000729 /* AppConfig */ = {
+			isa = PBXGroup;
+			children = (
+				100000000000000000000231 /* AppConfig.swift */,
+			);
+			path = AppConfig;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -427,8 +439,9 @@
 				100000000000000000000103 /* VibePickerViewModel.swift in Sources */,
 				100000000000000000000104 /* Vibe.swift in Sources */,
 				100000000000000000000108 /* VibeSnapshot.swift in Sources */,
-				100000000000000000000110 /* SharedVibeData.swift in Sources */,
+					100000000000000000000110 /* SharedVibeData.swift in Sources */,
 					100000000000000000000118 /* LocalizedText.swift in Sources */,
+					100000000000000000000131 /* AppConfig.swift in Sources */,
 					100000000000000000000129 /* VibePulseDesign.swift in Sources */,
 					100000000000000000000123 /* SplashView.swift in Sources */,
 				100000000000000000000124 /* SplashViewModel.swift in Sources */,
@@ -448,8 +461,9 @@
 				100000000000000000000106 /* VibePulseWidget.swift in Sources */,
 				100000000000000000000105 /* Vibe.swift in Sources */,
 				100000000000000000000109 /* VibeSnapshot.swift in Sources */,
-				100000000000000000000111 /* SharedVibeData.swift in Sources */,
+					100000000000000000000111 /* SharedVibeData.swift in Sources */,
 					100000000000000000000119 /* LocalizedText.swift in Sources */,
+					100000000000000000000132 /* AppConfig.swift in Sources */,
 					100000000000000000000130 /* VibePulseDesign.swift in Sources */,
 					100000000000000000000114 /* VibeWidgetEntry.swift in Sources */,
 				100000000000000000000115 /* VibeWidgetProvider.swift in Sources */,

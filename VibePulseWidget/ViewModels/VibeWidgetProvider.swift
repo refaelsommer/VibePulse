@@ -9,20 +9,12 @@ import Foundation
 import WidgetKit
 
 struct VibeWidgetProvider: TimelineProvider {
-    fileprivate struct Metrics {
-        static let restingPhase = -1
-        static let firstCelebrationPhase = 0
-        static let celebrationFrameCount = 6
-        static let celebrationWindowMinutes = 8
-        static let refreshIntervalHours = 1
-    }
-
     func placeholder(in context: Context) -> VibeWidgetEntry {
-        VibeWidgetEntry(date: Date(), snapshot: .empty, phase: Metrics.restingPhase)
+        VibeWidgetEntry(date: Date(), snapshot: .empty, phase: AppConfig.Widget.restingPhase)
     }
 
     func getSnapshot(in context: Context, completion: @escaping (VibeWidgetEntry) -> Void) {
-        completion(VibeWidgetEntry(date: Date(), snapshot: SharedVibeData.load(), phase: Metrics.firstCelebrationPhase))
+        completion(VibeWidgetEntry(date: Date(), snapshot: SharedVibeData.load(), phase: AppConfig.Widget.firstCelebrationPhase))
     }
 
     func getTimeline(in context: Context, completion: @escaping (Timeline<VibeWidgetEntry>) -> Void) {
@@ -31,14 +23,14 @@ struct VibeWidgetProvider: TimelineProvider {
 
         let entries = snapshot.shouldShowTimelineCelebration(now: now)
             ? celebrationEntries(for: snapshot, now: now)
-            : [VibeWidgetEntry(date: now, snapshot: snapshot, phase: Metrics.restingPhase)]
+            : [VibeWidgetEntry(date: now, snapshot: snapshot, phase: AppConfig.Widget.restingPhase)]
 
-        let refreshDate = Calendar.current.date(byAdding: .hour, value: Metrics.refreshIntervalHours, to: now) ?? now
+        let refreshDate = Calendar.current.date(byAdding: .hour, value: AppConfig.Widget.refreshIntervalHours, to: now) ?? now
         completion(Timeline(entries: entries, policy: .after(refreshDate)))
     }
 
     private func celebrationEntries(for snapshot: VibeSnapshot, now: Date) -> [VibeWidgetEntry] {
-        let celebrationFrames = (0..<Metrics.celebrationFrameCount).map { phase in
+        let celebrationFrames = (0..<AppConfig.Widget.celebrationFrameCount).map { phase in
             VibeWidgetEntry(
                 date: Calendar.current.date(byAdding: .minute, value: phase, to: now) ?? now,
                 snapshot: snapshot,
@@ -48,12 +40,12 @@ struct VibeWidgetProvider: TimelineProvider {
 
         let restingDate = Calendar.current.date(
             byAdding: .minute,
-            value: Metrics.celebrationFrameCount,
+            value: AppConfig.Widget.celebrationFrameCount,
             to: now
         ) ?? now
 
         return celebrationFrames + [
-            VibeWidgetEntry(date: restingDate, snapshot: snapshot, phase: Metrics.restingPhase)
+            VibeWidgetEntry(date: restingDate, snapshot: snapshot, phase: AppConfig.Widget.restingPhase)
         ]
     }
 }
@@ -61,7 +53,7 @@ struct VibeWidgetProvider: TimelineProvider {
 private extension VibeSnapshot {
     func shouldShowTimelineCelebration(now: Date) -> Bool {
         guard isMilestone, let selectedAt else { return false }
-        let celebrationWindow = TimeInterval(VibeWidgetProvider.Metrics.celebrationWindowMinutes * 60)
+        let celebrationWindow = TimeInterval(AppConfig.Widget.celebrationWindowMinutes * 60)
         return now.timeIntervalSince(selectedAt) <= celebrationWindow
     }
 }

@@ -9,7 +9,6 @@ import Foundation
 
 struct VibeSnapshot: Codable, Equatable {
     private struct Metrics {
-        static let picksPerMilestone = 7
         static let emptyPickCount = 0
     }
 
@@ -35,6 +34,6 @@ struct VibeSnapshot: Codable, Equatable {
     }
 
     var isMilestone: Bool {
-        totalPickCount > Metrics.emptyPickCount && totalPickCount % Metrics.picksPerMilestone == 0
+        totalPickCount > Metrics.emptyPickCount && totalPickCount % AppConfig.Milestones.picksPerBurst == 0
     }
 }

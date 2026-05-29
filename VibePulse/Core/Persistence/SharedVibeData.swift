@@ -9,12 +9,11 @@ import Foundation
 
 enum SharedVibeData {
     private struct Metrics {
-        static let appGroupID = "group.com.refaelsommer.vibepulse"
         static let snapshotStorageKey = "vibe.snapshot.v1"
     }
 
     static var defaults: UserDefaults {
-        UserDefaults(suiteName: Metrics.appGroupID) ?? .standard
+        UserDefaults(suiteName: AppConfig.Identifiers.appGroupID) ?? .standard
     }
 
     static func load() -> VibeSnapshot {

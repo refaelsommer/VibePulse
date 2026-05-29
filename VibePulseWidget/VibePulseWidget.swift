@@ -9,12 +9,7 @@ import SwiftUI
 import WidgetKit
 
 struct VibePulseWidget: Widget {
-    private struct Metrics {
-        static let widgetKind = "VibePulseWidget"
-        static let supportedFamilies: [WidgetFamily] = [.systemSmall, .systemMedium]
-    }
-
-    let kind = Metrics.widgetKind
+    let kind = AppConfig.Identifiers.widgetKind
 
     var body: some WidgetConfiguration {
         StaticConfiguration(kind: kind, provider: VibeWidgetProvider()) { entry in
@@ -22,7 +17,7 @@ struct VibePulseWidget: Widget {
         }
         .configurationDisplayName(VibeWidgetViewModel.displayNameText)
         .description(VibeWidgetViewModel.descriptionText)
-        .supportedFamilies(Metrics.supportedFamilies)
+        .supportedFamilies(AppConfig.Widget.supportedFamilies)
         .contentMarginsDisabled()
     }
 }
