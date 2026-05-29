@@ -9,17 +9,12 @@ import SwiftUI
 
 struct MilestoneBurstView: View {
     private struct Metrics {
-        static let overlayOpacity = 0.42
         static let contentSpacing: CGFloat = 14
         static let streakNumberFontSize: CGFloat = 86
-        static let subtitleOpacity = 0.72
         static let contentPadding: CGFloat = 30
-        static let contentCornerRadius: CGFloat = 32
         static let buttonTopPadding: CGFloat = 10
         static let buttonHorizontalPadding: CGFloat = 20
         static let buttonVerticalPadding: CGFloat = 12
-        static let buttonCornerRadius: CGFloat = 18
-        static let buttonBackgroundOpacity = 0.22
         static let buttonBorderOpacity = 0.3
         static let buttonBorderWidth: CGFloat = 1
         static let expandedScale = 1.0
@@ -34,7 +29,7 @@ struct MilestoneBurstView: View {
 
     var body: some View {
         ZStack {
-            Color.black.opacity(Metrics.overlayOpacity).ignoresSafeArea()
+            VibePulseDesign.Palette.shade.opacity(VibePulseDesign.Opacity.scrim).ignoresSafeArea()
 
             MilestoneConfettiView()
                 .zIndex(3)
@@ -46,25 +41,25 @@ struct MilestoneBurstView: View {
                     .font(.title.weight(.heavy))
                 Text(viewModel.subtitleText)
                     .font(.headline)
-                    .foregroundStyle(.white.opacity(Metrics.subtitleOpacity))
+                    .foregroundStyle(VibePulseDesign.Palette.primaryText.opacity(VibePulseDesign.Opacity.subduedText))
 
                 Button(action: dismiss) {
                     Text(viewModel.confirmationButtonText)
                         .font(.headline.weight(.bold))
                         .padding(.horizontal, Metrics.buttonHorizontalPadding)
                         .padding(.vertical, Metrics.buttonVerticalPadding)
-                        .background(.white.opacity(Metrics.buttonBackgroundOpacity), in: Capsule())
+                        .background(VibePulseDesign.Palette.highlight.opacity(VibePulseDesign.Opacity.capsuleFill), in: Capsule())
                         .overlay(
                             Capsule()
-                                .stroke(.white.opacity(Metrics.buttonBorderOpacity), lineWidth: Metrics.buttonBorderWidth)
+                                .stroke(VibePulseDesign.Palette.highlight.opacity(Metrics.buttonBorderOpacity), lineWidth: Metrics.buttonBorderWidth)
                         )
                 }
                 .buttonStyle(.plain)
                 .padding(.top, Metrics.buttonTopPadding)
             }
-            .foregroundStyle(.white)
+            .foregroundStyle(VibePulseDesign.Palette.primaryText)
             .padding(Metrics.contentPadding)
-            .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: Metrics.contentCornerRadius, style: .continuous))
+            .background(VibePulseDesign.MaterialStyle.panel, in: RoundedRectangle(cornerRadius: VibePulseDesign.Radius.modal, style: .continuous))
             .scaleEffect(pop ? Metrics.expandedScale : Metrics.collapsedScale)
             .zIndex(1)
 

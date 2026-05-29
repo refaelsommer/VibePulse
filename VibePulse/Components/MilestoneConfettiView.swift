@@ -29,7 +29,6 @@ struct MilestoneConfettiView: View {
         static let baseHeight: CGFloat = 14
         static let heightStep: CGFloat = 3
         static let heightCycle = 4
-        static let cornerRadius: CGFloat = 1.5
         static let hiddenOpacity = 0.0
         static let visibleOpacity = 1.0
         static let sideStepMultiplier = 7
@@ -41,15 +40,6 @@ struct MilestoneConfettiView: View {
         static let originXStepModulo = 100
         static let originYStepMultiplier = 31
         static let originYStepModulo = 100
-        static let colors = [
-            Color(red: 0.93, green: 0.05, blue: 0.12),
-            Color(red: 0.06, green: 0.30, blue: 0.90),
-            Color(red: 0.04, green: 0.62, blue: 0.26),
-            Color(red: 1.00, green: 0.79, blue: 0.05),
-            Color(red: 1.00, green: 0.36, blue: 0.02),
-            Color(red: 0.00, green: 0.72, blue: 0.70),
-            Color(red: 0.91, green: 0.10, blue: 0.38)
-        ]
     }
 
     @State private var explodes = false
@@ -84,7 +74,7 @@ struct MilestoneConfettiView: View {
     }
 
     private func confettiPiece(for index: Int) -> some View {
-        RoundedRectangle(cornerRadius: Metrics.cornerRadius, style: .continuous)
+        RoundedRectangle(cornerRadius: VibePulseDesign.Radius.confetti, style: .continuous)
             .fill(color(for: index))
             .frame(width: width(for: index), height: height(for: index))
     }
@@ -153,7 +143,7 @@ struct MilestoneConfettiView: View {
     }
 
     private func color(for index: Int) -> Color {
-        Metrics.colors[index % Metrics.colors.count]
+        VibePulseDesign.Palette.paperConfetti[index % VibePulseDesign.Palette.paperConfetti.count]
     }
 
     private func width(for index: Int) -> CGFloat {

@@ -11,6 +11,10 @@ import WidgetKit
 struct VibePulseWidgetEntryView: View {
     private struct Metrics {
         static let defaultEmoji = "✨"
+        static let bottomShadeOpacity = 0.26
+        static let topGlowOpacity = 0.42
+        static let accentGlowOpacity = 0.62
+        static let centerGlowOpacity = 0.22
     }
 
     @Environment(\.widgetFamily) private var family
@@ -48,7 +52,7 @@ struct VibePulseWidgetEntryView: View {
             Spacer(minLength: .zero)
             bottomText(compact: compact)
         }
-        .foregroundStyle(.white)
+        .foregroundStyle(VibePulseDesign.Palette.primaryText)
         .padding()
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
     }
@@ -75,7 +79,7 @@ struct VibePulseWidgetEntryView: View {
 
             Text(compact ? viewModel.compactWeeklyCountText : viewModel.weeklyCountText)
                 .font(compact ? .caption2.weight(.semibold) : .caption.weight(.semibold))
-                .foregroundStyle(.white.secondary)
+                .foregroundStyle(VibePulseDesign.Palette.primaryText.opacity(VibePulseDesign.Opacity.secondaryText))
                 .lineLimit(compact ? 1 : 2)
                 .minimumScaleFactor(0.72)
 
@@ -87,8 +91,8 @@ struct VibePulseWidgetEntryView: View {
         Text(viewModel.countBadgeText)
             .padding(.horizontal)
             .padding(.vertical, 6)
-            .background(.white.opacity(0.28), in: Capsule())
-            .overlay(Capsule().stroke(.white.opacity(0.28)))
+            .background(VibePulseDesign.Palette.highlight.opacity(VibePulseDesign.Opacity.capsuleFill), in: Capsule())
+            .overlay(Capsule().stroke(VibePulseDesign.Palette.highlight.opacity(VibePulseDesign.Opacity.capsuleBorder)))
     }
 
     @ViewBuilder
@@ -101,8 +105,8 @@ struct VibePulseWidgetEntryView: View {
                 .minimumScaleFactor(0.72)
                 .padding(.horizontal)
                 .padding(.vertical, 6)
-                .background(.white.opacity(0.28), in: Capsule())
-                .overlay(Capsule().stroke(.white.opacity(0.28)))
+                .background(VibePulseDesign.Palette.highlight.opacity(VibePulseDesign.Opacity.capsuleFill), in: Capsule())
+                .overlay(Capsule().stroke(VibePulseDesign.Palette.highlight.opacity(VibePulseDesign.Opacity.capsuleBorder)))
         }
     }
 
@@ -111,10 +115,10 @@ struct VibePulseWidgetEntryView: View {
     }
 
     private func widgetBackground(compact: Bool) -> some View {
-        let colors = vibe?.colors ?? [.indigo, .cyan, .pink]
-        let firstColor = colors.first ?? .indigo
-        let secondColor = colors.dropFirst().first ?? .cyan
-        let accentColor = colors.last ?? .pink
+        let colors = vibe?.colors ?? VibePulseDesign.Palette.widgetFallback
+        let firstColor = colors.first ?? VibePulseDesign.Palette.widgetFallback[0]
+        let secondColor = colors.dropFirst().first ?? VibePulseDesign.Palette.widgetFallback[1]
+        let accentColor = colors.last ?? VibePulseDesign.Palette.widgetFallback[2]
 
         return GeometryReader { proxy in
             let glowRadius = max(proxy.size.width, proxy.size.height)
@@ -128,15 +132,18 @@ struct VibePulseWidgetEntryView: View {
 
                 LinearGradient(
                     colors: [
-                        Color.black.opacity(.zero),
-                        Color.black.opacity(0.26)
+                        VibePulseDesign.Palette.clearShade,
+                        VibePulseDesign.Palette.shade.opacity(Metrics.bottomShadeOpacity)
                     ],
                     startPoint: .top,
                     endPoint: .bottom
                 )
 
                 RadialGradient(
-                    colors: [Color.white.opacity(0.42), Color.white.opacity(.zero)],
+                    colors: [
+                        VibePulseDesign.Palette.highlight.opacity(Metrics.topGlowOpacity),
+                        VibePulseDesign.Palette.highlight.opacity(.zero)
+                    ],
                     center: .topLeading,
                     startRadius: .zero,
                     endRadius: glowRadius
@@ -144,7 +151,7 @@ struct VibePulseWidgetEntryView: View {
                 .blendMode(.screen)
 
                 RadialGradient(
-                    colors: [accentColor.opacity(0.62), accentColor.opacity(.zero)],
+                    colors: [accentColor.opacity(Metrics.accentGlowOpacity), accentColor.opacity(.zero)],
                     center: .bottomTrailing,
                     startRadius: .zero,
                     endRadius: glowRadius
@@ -153,7 +160,7 @@ struct VibePulseWidgetEntryView: View {
 
                 if !compact {
                     RadialGradient(
-                        colors: [secondColor.opacity(0.22), secondColor.opacity(.zero)],
+                        colors: [secondColor.opacity(Metrics.centerGlowOpacity), secondColor.opacity(.zero)],
                         center: .center,
                         startRadius: .zero,
                         endRadius: glowRadius

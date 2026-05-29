@@ -9,8 +9,6 @@ import SwiftUI
 
 struct MilestoneProgressBar: View {
     private struct Metrics {
-        static let trackOpacity = 0.24
-        static let fillOpacity = 0.92
         static let height: CGFloat = 8
     }
 
@@ -20,10 +18,10 @@ struct MilestoneProgressBar: View {
     var body: some View {
         GeometryReader { proxy in
             Capsule()
-                .fill(.white.opacity(Metrics.trackOpacity))
+                .fill(VibePulseDesign.Palette.highlight.opacity(VibePulseDesign.Opacity.progressTrack))
                 .overlay(alignment: .leading) {
                     Capsule()
-                        .fill(.white.opacity(Metrics.fillOpacity))
+                        .fill(VibePulseDesign.Palette.highlight.opacity(VibePulseDesign.Opacity.progressFill))
                         .frame(width: proxy.size.width * progressRatio)
                 }
         }

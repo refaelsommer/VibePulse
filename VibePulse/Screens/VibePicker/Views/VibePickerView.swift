@@ -9,11 +9,6 @@ import SwiftUI
 
 struct VibePickerView: View {
     private struct Metrics {
-        static let subtitleOpacity = 0.78
-        static let statusPanelCornerRadius: CGFloat = 24
-        static let statusPanelBorderOpacity = 0.24
-        static let statusTextOpacity = 0.76
-        static let captionOpacity = 0.66
         static let selectedPulseScale = 1.04
         static let selectionPulseResponse = 0.3
         static let selectionPulseDamping = 0.45
@@ -34,7 +29,6 @@ struct VibePickerView: View {
         static let shadeBlur: CGFloat = 42
         static let shadeStartOffset = CGSize(width: 120, height: 170)
         static let shadeEndOffset = CGSize(width: -130, height: 260)
-        static let defaultBackgroundColors = [Color(red: 0.07, green: 0.08, blue: 0.12), Color(red: 0.19, green: 0.22, blue: 0.34)]
     }
 
     @EnvironmentObject private var viewModel: VibePickerViewModel
@@ -89,17 +83,17 @@ struct VibePickerView: View {
     }
 
     private var background: some View {
-        let colors = selectedVibe?.colors ?? Metrics.defaultBackgroundColors
+        let colors = selectedVibe?.colors ?? VibePulseDesign.Palette.defaultBackground
 
         return ZStack {
             LinearGradient(colors: colors, startPoint: .topLeading, endPoint: .bottomTrailing)
             Circle()
-                .fill(.white.opacity(Metrics.glowOpacity))
+                .fill(VibePulseDesign.Palette.highlight.opacity(Metrics.glowOpacity))
                 .frame(width: Metrics.glowSize, height: Metrics.glowSize)
                 .blur(radius: Metrics.glowBlur)
                 .offset(backgroundSpin ? Metrics.glowEndOffset : Metrics.glowStartOffset)
             Circle()
-                .fill(.black.opacity(Metrics.shadeOpacity))
+                .fill(VibePulseDesign.Palette.shade.opacity(Metrics.shadeOpacity))
                 .frame(width: Metrics.shadeSize, height: Metrics.shadeSize)
                 .blur(radius: Metrics.shadeBlur)
                 .offset(backgroundSpin ? Metrics.shadeEndOffset : Metrics.shadeStartOffset)
@@ -112,11 +106,11 @@ struct VibePickerView: View {
         VStack {
             Text(viewModel.appTitleText)
                 .font(.largeTitle.weight(.black))
-                .foregroundStyle(.white)
+                .foregroundStyle(VibePulseDesign.Palette.primaryText)
 
             Text(viewModel.appSubtitleText)
                 .font(.headline)
-                .foregroundStyle(.white.opacity(Metrics.subtitleOpacity))
+                .foregroundStyle(VibePulseDesign.Palette.primaryText.opacity(VibePulseDesign.Opacity.secondaryText))
                 .multilineTextAlignment(.center)
         }
     }
@@ -144,23 +138,23 @@ struct VibePickerView: View {
 
             Text(viewModel.weeklyCountText)
                 .font(.subheadline.weight(.semibold))
-                .foregroundStyle(.white.opacity(Metrics.statusTextOpacity))
+                .foregroundStyle(VibePulseDesign.Palette.primaryText.opacity(VibePulseDesign.Opacity.secondaryText))
                 .multilineTextAlignment(.center)
 
             MilestoneProgressBar(value: displayedMilestoneProgress, total: viewModel.milestoneProgressTotal)
 
             Text(viewModel.nextBurstText)
                 .font(.caption.weight(.medium))
-                .foregroundStyle(.white.opacity(Metrics.captionOpacity))
+                .foregroundStyle(VibePulseDesign.Palette.primaryText.opacity(VibePulseDesign.Opacity.tertiaryText))
                 .multilineTextAlignment(.center)
         }
-        .foregroundStyle(.white)
+        .foregroundStyle(VibePulseDesign.Palette.primaryText)
         .padding()
         .frame(maxWidth: .infinity)
-        .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: Metrics.statusPanelCornerRadius, style: .continuous))
+        .background(VibePulseDesign.MaterialStyle.panel, in: RoundedRectangle(cornerRadius: VibePulseDesign.Radius.panel, style: .continuous))
         .overlay(
-            RoundedRectangle(cornerRadius: Metrics.statusPanelCornerRadius, style: .continuous)
-                .stroke(.white.opacity(Metrics.statusPanelBorderOpacity))
+            RoundedRectangle(cornerRadius: VibePulseDesign.Radius.panel, style: .continuous)
+                .stroke(VibePulseDesign.Palette.highlight.opacity(VibePulseDesign.Opacity.panelBorder))
         )
     }
 

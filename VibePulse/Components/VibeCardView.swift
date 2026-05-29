@@ -9,14 +9,6 @@ import SwiftUI
 
 struct VibeCardView: View {
     private struct Metrics {
-        static let selectedEmojiBackgroundOpacity = 0.28
-        static let defaultEmojiBackgroundOpacity = 0.15
-        static let messageOpacity = 0.68
-        static let cardCornerRadius: CGFloat = 22
-        static let selectedCardBackgroundOpacity = 0.26
-        static let defaultCardBackgroundOpacity = 0.13
-        static let selectedBorderOpacity = 0.82
-        static let defaultBorderOpacity = 0.18
         static let selectedBorderWidth: CGFloat = 2
         static let selectedShadowOpacity = 0.24
         static let defaultShadowOpacity = 0.10
@@ -52,7 +44,7 @@ struct VibeCardView: View {
             Text(emoji)
                 .font(.largeTitle)
                 .padding()
-                .background(.white.opacity(isSelected ? Metrics.selectedEmojiBackgroundOpacity : Metrics.defaultEmojiBackgroundOpacity), in: Circle())
+                .background(VibePulseDesign.Palette.highlight.opacity(emojiBackgroundOpacity), in: Circle())
 
             Spacer()
 
@@ -61,22 +53,22 @@ struct VibeCardView: View {
                     .font(.title3.weight(.heavy))
                 Text(messageText)
                     .font(.caption.weight(.semibold))
-                    .foregroundStyle(.white.opacity(Metrics.messageOpacity))
+                    .foregroundStyle(VibePulseDesign.Palette.primaryText.opacity(VibePulseDesign.Opacity.tertiaryText))
             }
             .multilineTextAlignment(.center)
         }
-        .foregroundStyle(.white)
+        .foregroundStyle(VibePulseDesign.Palette.primaryText)
         .frame(maxWidth: .infinity)
         .aspectRatio(1, contentMode: .fit)
         .padding()
         .background(cardBackground, in: cardShape)
         .overlay(
             cardShape
-                .stroke(.white.opacity(borderOpacity), lineWidth: isSelected ? Metrics.selectedBorderWidth : Metrics.selectedBorderWidth / 2)
+                .stroke(VibePulseDesign.Palette.highlight.opacity(borderOpacity), lineWidth: isSelected ? Metrics.selectedBorderWidth : Metrics.selectedBorderWidth / 2)
         )
         .contentShape(cardShape)
         .shadow(
-            color: .black.opacity(shadowOpacity),
+            color: VibePulseDesign.Palette.shade.opacity(shadowOpacity),
             radius: isSelected ? Metrics.selectedShadowRadius : Metrics.selectedShadowRadius / 2,
             y: isSelected ? Metrics.selectedShadowYOffset : Metrics.selectedShadowYOffset / 2
         )
@@ -84,11 +76,15 @@ struct VibeCardView: View {
     }
 
     private var cardBackground: some ShapeStyle {
-        .white.opacity(isSelected ? Metrics.selectedCardBackgroundOpacity : Metrics.defaultCardBackgroundOpacity)
+        VibePulseDesign.Palette.highlight.opacity(isSelected ? VibePulseDesign.Opacity.cardSelectedFill : VibePulseDesign.Opacity.cardDefaultFill)
+    }
+
+    private var emojiBackgroundOpacity: Double {
+        isSelected ? VibePulseDesign.Opacity.emojiSelectedFill : VibePulseDesign.Opacity.emojiDefaultFill
     }
 
     private var borderOpacity: Double {
-        isSelected ? Metrics.selectedBorderOpacity : Metrics.defaultBorderOpacity
+        isSelected ? VibePulseDesign.Opacity.cardSelectedBorder : VibePulseDesign.Opacity.cardDefaultBorder
     }
 
     private var shadowOpacity: Double {
@@ -96,6 +92,6 @@ struct VibeCardView: View {
     }
 
     private var cardShape: RoundedRectangle {
-        RoundedRectangle(cornerRadius: Metrics.cardCornerRadius, style: .continuous)
+        RoundedRectangle(cornerRadius: VibePulseDesign.Radius.card, style: .continuous)
     }
 }

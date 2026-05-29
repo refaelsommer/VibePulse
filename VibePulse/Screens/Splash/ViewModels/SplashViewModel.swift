@@ -34,7 +34,7 @@ struct SplashViewModel {
             SplashParticle(
                 id: index,
                 symbol: vibe.emoji,
-                color: vibe.colors.last ?? .white,
+                color: vibe.colors.last ?? VibePulseDesign.Palette.highlight,
                 angle: .degrees(Double(index) / Double(Vibe.allCases.count) * Metrics.fullCircleDegrees),
                 radius: Metrics.baseParticleRadius + CGFloat(index % 2) * Metrics.particleRadiusStep,
                 size: Metrics.particleBaseSize + CGFloat(index % 3) * Metrics.particleSizeStep

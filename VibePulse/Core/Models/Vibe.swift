@@ -39,12 +39,6 @@ enum Vibe: String, CaseIterable, Codable, Identifiable {
         static let joyMessageDefault = "Light it up"
         static let flowMessageDefault = "Smooth momentum"
         static let sparkMessageDefault = "Fresh ignition"
-        static let focusColors = [Color(red: 0.18, green: 0.27, blue: 0.86), Color(red: 0.10, green: 0.79, blue: 0.88)]
-        static let powerColors = [Color(red: 0.94, green: 0.22, blue: 0.32), Color(red: 1.00, green: 0.67, blue: 0.24)]
-        static let chillColors = [Color(red: 0.20, green: 0.63, blue: 0.77), Color(red: 0.63, green: 0.86, blue: 0.65)]
-        static let joyColors = [Color(red: 1.00, green: 0.72, blue: 0.18), Color(red: 0.99, green: 0.25, blue: 0.57)]
-        static let flowColors = [Color(red: 0.07, green: 0.56, blue: 0.88), Color(red: 0.29, green: 0.89, blue: 0.77)]
-        static let sparkColors = [Color(red: 0.48, green: 0.24, blue: 0.95), Color(red: 0.97, green: 0.36, blue: 0.77)]
     }
 
     case focus
@@ -91,12 +85,12 @@ enum Vibe: String, CaseIterable, Codable, Identifiable {
 
     var colors: [Color] {
         switch self {
-        case .focus: Metrics.focusColors
-        case .power: Metrics.powerColors
-        case .chill: Metrics.chillColors
-        case .joy: Metrics.joyColors
-        case .flow: Metrics.flowColors
-        case .spark: Metrics.sparkColors
+        case .focus: VibePulseDesign.Palette.focusVibe
+        case .power: VibePulseDesign.Palette.powerVibe
+        case .chill: VibePulseDesign.Palette.chillVibe
+        case .joy: VibePulseDesign.Palette.joyVibe
+        case .flow: VibePulseDesign.Palette.flowVibe
+        case .spark: VibePulseDesign.Palette.sparkVibe
         }
     }
 }

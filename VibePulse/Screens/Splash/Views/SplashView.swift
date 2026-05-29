@@ -21,7 +21,6 @@ struct SplashView: View {
         static let titleFontSize: CGFloat = 44
         static let titleTopPadding: CGFloat = 118
         static let taglineTopPadding: CGFloat = 4
-        static let taglineOpacity = 0.72
         static let glowSize: CGFloat = 310
         static let glowOpacity = 0.34
         static let glowBlur: CGFloat = 34
@@ -29,16 +28,6 @@ struct SplashView: View {
         static let ringOpacity = 0.52
         static let particleShadowRadius: CGFloat = 10
         static let particleShadowOpacity = 0.38
-        static let backgroundColors = [
-            Color(red: 0.06, green: 0.07, blue: 0.16),
-            Color(red: 0.13, green: 0.15, blue: 0.36),
-            Color(red: 0.42, green: 0.15, blue: 0.72)
-        ]
-        static let orbColors = [
-            Color(red: 0.07, green: 0.80, blue: 0.92),
-            Color(red: 0.96, green: 0.27, blue: 0.70),
-            Color(red: 1.00, green: 0.73, blue: 0.22)
-        ]
     }
 
     let viewModel: SplashViewModel
@@ -49,11 +38,11 @@ struct SplashView: View {
 
     var body: some View {
         ZStack {
-            LinearGradient(colors: Metrics.backgroundColors, startPoint: .topLeading, endPoint: .bottomTrailing)
+            LinearGradient(colors: VibePulseDesign.Palette.splashBackground, startPoint: .topLeading, endPoint: .bottomTrailing)
                 .ignoresSafeArea()
 
             Circle()
-                .fill(.white.opacity(Metrics.glowOpacity))
+                .fill(VibePulseDesign.Palette.highlight.opacity(Metrics.glowOpacity))
                 .frame(width: Metrics.glowSize, height: Metrics.glowSize)
                 .blur(radius: Metrics.glowBlur)
                 .scaleEffect(didAnimate ? Metrics.expandedRingScale : Metrics.collapsedRingScale)
@@ -63,7 +52,7 @@ struct SplashView: View {
 
                 ZStack {
                     Circle()
-                        .stroke(.white.opacity(Metrics.ringOpacity), lineWidth: Metrics.ringLineWidth)
+                        .stroke(VibePulseDesign.Palette.highlight.opacity(Metrics.ringOpacity), lineWidth: Metrics.ringLineWidth)
                         .frame(width: Metrics.pulseRingSize, height: Metrics.pulseRingSize)
                         .scaleEffect(didAnimate ? Metrics.expandedRingScale : Metrics.collapsedRingScale)
 
@@ -76,24 +65,24 @@ struct SplashView: View {
                     }
 
                     Circle()
-                        .fill(AngularGradient(colors: Metrics.orbColors, center: .center))
+                        .fill(AngularGradient(colors: VibePulseDesign.Palette.pulseOrb, center: .center))
                         .frame(width: Metrics.pulseOrbSize, height: Metrics.pulseOrbSize)
                         .rotationEffect(.degrees(didAnimate ? 360 : 0))
                         .overlay {
                             Image(systemName: "waveform.path.ecg")
                                 .font(.system(size: 46, weight: .black))
-                                .foregroundStyle(.white)
+                                .foregroundStyle(VibePulseDesign.Palette.primaryText)
                         }
                 }
 
                 Text(viewModel.appNameText)
                     .font(.system(size: Metrics.titleFontSize, weight: .black, design: .rounded))
-                    .foregroundStyle(.white)
+                    .foregroundStyle(VibePulseDesign.Palette.primaryText)
                     .padding(.top, Metrics.titleTopPadding)
 
                 Text(viewModel.taglineText)
                     .font(.headline.weight(.semibold))
-                    .foregroundStyle(.white.opacity(Metrics.taglineOpacity))
+                    .foregroundStyle(VibePulseDesign.Palette.primaryText.opacity(VibePulseDesign.Opacity.subduedText))
                     .padding(.top, Metrics.taglineTopPadding)
 
                 Spacer()

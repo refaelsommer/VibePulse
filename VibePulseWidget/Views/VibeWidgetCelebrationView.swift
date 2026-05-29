@@ -10,18 +10,8 @@ import SwiftUI
 struct VibeWidgetCelebrationView: View {
     private struct Metrics {
         static let particleCount = 34
-        static let particleColors = [
-            Color.red,
-            Color.blue,
-            Color.green,
-            Color.yellow,
-            Color.orange,
-            Color.teal,
-            Color.pink
-        ]
         static let particleWidths: [CGFloat] = [4, 5, 6, 3]
         static let particleHeights: [CGFloat] = [10, 12, 8, 6]
-        static let particleCornerRadius: CGFloat = 1.5
         static let baseParticleOpacity = 0.58
         static let particleOpacityStep = 0.08
         static let particleOpacityCycle = 4
@@ -53,13 +43,13 @@ struct VibeWidgetCelebrationView: View {
     }
 
     private func confettiPiece(for index: Int) -> some View {
-        let color = Metrics.particleColors[index % Metrics.particleColors.count]
+        let color = VibePulseDesign.Palette.paperConfetti[index % VibePulseDesign.Palette.paperConfetti.count]
         let width = Metrics.particleWidths[index % Metrics.particleWidths.count]
         let height = Metrics.particleHeights[index % Metrics.particleHeights.count]
         let opacity = Metrics.baseParticleOpacity + Double((index + entry.phase) % Metrics.particleOpacityCycle) * Metrics.particleOpacityStep
         let rotation = Double(index) * Metrics.rotationIndexMultiplier + Double(entry.phase) * Metrics.rotationPhaseMultiplier
 
-        return RoundedRectangle(cornerRadius: Metrics.particleCornerRadius, style: .continuous)
+        return RoundedRectangle(cornerRadius: VibePulseDesign.Radius.confetti, style: .continuous)
             .fill(color)
             .frame(width: width, height: height)
             .opacity(opacity)
