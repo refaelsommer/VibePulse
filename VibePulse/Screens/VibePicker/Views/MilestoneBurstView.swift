@@ -31,7 +31,7 @@ struct MilestoneBurstView: View {
         ZStack {
             VibePulseDesign.Palette.shade.opacity(VibePulseDesign.Opacity.scrim).ignoresSafeArea()
 
-            MilestoneConfettiView()
+            ConfettiBurstView()
                 .zIndex(3)
 
             VStack(spacing: Metrics.contentSpacing) {
@@ -63,7 +63,7 @@ struct MilestoneBurstView: View {
             .scaleEffect(pop ? Metrics.expandedScale : Metrics.collapsedScale)
             .zIndex(1)
 
-            MilestoneOrbitView(isVisible: pop)
+            EmojiOrbitView(isVisible: pop)
                 .zIndex(2)
         }
         .onAppear {

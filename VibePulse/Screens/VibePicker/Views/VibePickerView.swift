@@ -141,7 +141,7 @@ struct VibePickerView: View {
                 .foregroundStyle(VibePulseDesign.Palette.primaryText.opacity(VibePulseDesign.Opacity.secondaryText))
                 .multilineTextAlignment(.center)
 
-            MilestoneProgressBar(value: displayedMilestoneProgress, total: viewModel.milestoneProgressTotal)
+            CapsuleProgressBar(value: displayedMilestoneProgress, total: viewModel.milestoneProgressTotal)
 
             Text(viewModel.nextBurstText)
                 .font(.caption.weight(.medium))

@@ -1,5 +1,5 @@
 //
-//  MilestoneConfettiView.swift
+//  ConfettiBurstView.swift
 //  VibePulse
 //
 //  Created by Refael Sommer on 28/05/2026.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct MilestoneConfettiView: View {
+struct ConfettiBurstView: View {
     private struct Metrics {
         static let particleCount = 96
         static let originXRatio: CGFloat = 0.5

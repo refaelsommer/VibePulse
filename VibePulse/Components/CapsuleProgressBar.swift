@@ -1,5 +1,5 @@
 //
-//  MilestoneProgressBar.swift
+//  CapsuleProgressBar.swift
 //  VibePulse
 //
 //  Created by Refael Sommer on 28/05/2026.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct MilestoneProgressBar: View {
+struct CapsuleProgressBar: View {
     private struct Metrics {
         static let height: CGFloat = 8
     }

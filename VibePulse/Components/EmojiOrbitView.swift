@@ -1,5 +1,5 @@
 //
-//  MilestoneOrbitView.swift
+//  EmojiOrbitView.swift
 //  VibePulse
 //
 //  Created by Refael Sommer on 28/05/2026.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct MilestoneOrbitView: View {
+struct EmojiOrbitView: View {
     private struct Metrics {
         static let emojiSize: CGFloat = 34
         static let orbitRadiusX: CGFloat = 190
