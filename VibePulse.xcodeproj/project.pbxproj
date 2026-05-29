@@ -140,7 +140,10 @@
 		100000000000000000000703 /* VibePulseWidget */ = {
 			isa = PBXGroup;
 			children = (
-				100000000000000000000715 /* Widgets */,
+				100000000000000000000205 /* VibePulseWidget.swift */,
+				100000000000000000000717 /* Views */,
+				100000000000000000000718 /* ViewModels */,
+				100000000000000000000719 /* Models */,
 				100000000000000000000207 /* Info.plist */,
 				100000000000000000000209 /* VibePulseWidget.entitlements */,
 			);
@@ -225,25 +228,6 @@
 				100000000000000000000212 /* SharedVibeData.swift */,
 			);
 			path = Persistence;
-			sourceTree = "<group>";
-		};
-		100000000000000000000715 /* Widgets */ = {
-			isa = PBXGroup;
-			children = (
-				100000000000000000000716 /* VibePulse */,
-			);
-			path = Widgets;
-			sourceTree = "<group>";
-		};
-		100000000000000000000716 /* VibePulse */ = {
-			isa = PBXGroup;
-			children = (
-				100000000000000000000205 /* VibePulseWidget.swift */,
-				100000000000000000000717 /* Views */,
-				100000000000000000000718 /* ViewModels */,
-				100000000000000000000719 /* Models */,
-			);
-			path = VibePulse;
 			sourceTree = "<group>";
 		};
 		100000000000000000000717 /* Views */ = {
