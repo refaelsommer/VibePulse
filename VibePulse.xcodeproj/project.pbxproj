@@ -128,7 +128,7 @@
 			children = (
 				100000000000000000000706 /* App */,
 				100000000000000000000707 /* Screens */,
-				100000000000000000000727 /* SharedViews */,
+				100000000000000000000727 /* Components */,
 				100000000000000000000708 /* Core */,
 				100000000000000000000722 /* Resources */,
 				100000000000000000000206 /* Info.plist */,
@@ -307,7 +307,7 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		100000000000000000000727 /* SharedViews */ = {
+		100000000000000000000727 /* Components */ = {
 			isa = PBXGroup;
 			children = (
 				100000000000000000000213 /* VibeCardView.swift */,
@@ -315,7 +315,7 @@
 				100000000000000000000228 /* MilestoneConfettiView.swift */,
 				100000000000000000000229 /* MilestoneProgressBar.swift */,
 			);
-			path = SharedViews;
+			path = Components;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
