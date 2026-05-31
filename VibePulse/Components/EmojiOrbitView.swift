@@ -10,21 +10,16 @@ import SwiftUI
 struct EmojiOrbitView: View {
     private struct Metrics {
         static let emojiSize: CGFloat = 34
-        static let orbitRadiusX: CGFloat = 190
-        static let orbitRadiusY: CGFloat = 146
-        static let angleOffsetDegrees = -90.0
-        static let orbitStartDegrees = 0.0
-        static let orbitEndDegrees = 360.0
+        static let orbitRadius: CGFloat = 166
         static let orbitDuration = 7.0
         static let orbitDelay = 0.08
-        static let hiddenOpacity = 0.0
-        static let visibleOpacity = 1.0
         static let hiddenScale = 0.28
-        static let visibleScale = 1.0
+        static let fullCircleRadians = 2 * Double.pi
+        static let topAngleOffsetRadians = -Double.pi / 2
     }
 
     private let isVisible: Bool
-    @State private var orbitDegrees = Metrics.orbitStartDegrees
+    @State private var orbitAngle = Angle.zero
 
     init(isVisible: Bool) {
         self.isVisible = isVisible
@@ -41,23 +36,22 @@ struct EmojiOrbitView: View {
 
                 Text(orbitSymbols[index])
                     .font(.system(size: Metrics.emojiSize))
-                    .offset(x: cos(angle) * Metrics.orbitRadiusX, y: sin(angle) * Metrics.orbitRadiusY)
+                    .offset(x: cos(angle) * Metrics.orbitRadius, y: sin(angle) * Metrics.orbitRadius)
             }
         }
-        .rotationEffect(.degrees(orbitDegrees))
-        .scaleEffect(isVisible ? Metrics.visibleScale : Metrics.hiddenScale)
-        .opacity(isVisible ? Metrics.visibleOpacity : Metrics.hiddenOpacity)
+        .rotationEffect(orbitAngle)
+        .scaleEffect(isVisible ? 1 : Metrics.hiddenScale)
+        .opacity(isVisible ? 1 : .zero)
         .allowsHitTesting(false)
         .onAppear {
             withAnimation(.linear(duration: Metrics.orbitDuration).delay(Metrics.orbitDelay).repeatForever(autoreverses: false)) {
-                orbitDegrees = Metrics.orbitEndDegrees
+                orbitAngle = .degrees(360)
             }
         }
     }
 
     private func particleAngle(for index: Int) -> CGFloat {
         let progress = Double(index) / Double(orbitSymbols.count)
-        let degrees = progress * 360.0 + Metrics.angleOffsetDegrees
-        return CGFloat(degrees * .pi / 180)
+        return CGFloat(Metrics.fullCircleRadians * progress + Metrics.topAngleOffsetRadians)
     }
 }
