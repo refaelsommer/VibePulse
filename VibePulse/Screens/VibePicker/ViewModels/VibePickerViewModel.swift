@@ -115,6 +115,7 @@ final class VibePickerViewModel: ObservableObject {
 
         snapshot = next
         SharedVibeData.save(next)
+        // Refresh only this widget kind so future widgets are not woken up unnecessarily.
         WidgetCenter.shared.reloadTimelines(ofKind: AppConfig.Identifiers.widgetKind)
     }
 

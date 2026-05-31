@@ -13,6 +13,7 @@ enum SharedVibeData {
     }
 
     private static var defaults: UserDefaults {
+        // The app and widget share this suite through App Groups; the fallback keeps previews usable.
         UserDefaults(suiteName: AppConfig.Identifiers.appGroupID) ?? .standard
     }
 
@@ -32,6 +33,7 @@ enum SharedVibeData {
 
     static func normalized(_ snapshot: VibeSnapshot, now: Date = Date()) -> VibeSnapshot {
         let calendar = Calendar.current
+        // Weekly progress is derived from stored pick dates, so it resets without a scheduled cleanup job.
         let currentWeekDates = snapshot.pickDates.filter {
             calendar.isDate($0, equalTo: now, toGranularity: .weekOfYear)
         }

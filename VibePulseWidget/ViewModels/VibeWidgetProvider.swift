@@ -21,6 +21,7 @@ struct VibeWidgetProvider: TimelineProvider {
         let snapshot = SharedVibeData.load()
         let now = Date()
 
+        // WidgetKit renders scheduled snapshots, so the celebration is modeled as preplanned phases.
         let entries = snapshot.shouldShowTimelineCelebration(now: now)
             ? celebrationEntries(for: snapshot, now: now)
             : [VibeWidgetEntry(date: now, snapshot: snapshot, phase: AppConfig.Widget.restingPhase)]
@@ -30,6 +31,7 @@ struct VibeWidgetProvider: TimelineProvider {
     }
 
     private func celebrationEntries(for snapshot: VibeSnapshot, now: Date) -> [VibeWidgetEntry] {
+        // Each phase changes the static confetti layout; the final entry returns to the resting widget.
         let celebrationFrames = (0..<AppConfig.Widget.celebrationFrameCount).map { phase in
             VibeWidgetEntry(
                 date: Calendar.current.date(byAdding: .minute, value: phase, to: now) ?? now,
