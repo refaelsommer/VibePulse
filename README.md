@@ -1,29 +1,49 @@
 # VibePulse
 
-SwiftUI + WidgetKit interview assignment.
+Compact SwiftUI app with a WidgetKit companion for tracking a daily vibe.
 
-## What is included
+## Features
 
-- One-screen SwiftUI vibe picker.
-- Shared `VibeSnapshot` stored through App Groups.
-- WidgetKit extension showing the latest vibe and weekly count.
-- Every 7th pick triggers an in-app burst and a celebratory widget state.
-- Widget deep link: `vibepulse://selected-vibe`.
+- Pick one of six vibes: Focus, Power, Chill, Joy, Flow, or Spark.
+- The app shows the selected vibe, weekly pick count, and progress toward the next burst.
+- Every 7th pick opens an in-app celebration with confetti and orbiting vibe emojis.
+- The widget shows the latest vibe and weekly count in small and medium sizes.
+- Milestone widget entries use timeline phases for a short time-based celebration.
+- Widget tap opens the app through `vibepulse://selected-vibe`.
 
-## App Group setup
+## Shared Data
 
-The project uses this placeholder group:
+The app and widget sync through App Groups using:
 
 ```text
 group.com.refaelsommer.vibepulse
 ```
 
-In Xcode, enable **App Groups** for both the app target and widget target, then either create this group or replace it in:
+The shared snapshot is stored in `UserDefaults` from `SharedVibeData`.
 
-- `Shared/Vibe.swift`
-- `VibePulse/VibePulse.entitlements`
-- `VibePulseWidget/VibePulseWidget.entitlements`
+## Project Structure
 
-## Next design pass
+```text
+VibePulse/
+  App/
+  Components/
+  Core/
+    AppConfig/
+    Design/
+    Localization/
+    Models/
+    Persistence/
+  Screens/
 
-The functional skeleton is intentionally ready for a visual direction pass: photos, palette, brand style, and final animation personality.
+VibePulseWidget/
+  Models/
+  ViewModels/
+  Views/
+```
+
+## Notes
+
+- Main app: SwiftUI.
+- Widget: WidgetKit.
+- Shared model/config/design code is used by both targets.
+- Widget animation is implemented with preplanned timeline entries because widgets cannot run continuous custom animations.
