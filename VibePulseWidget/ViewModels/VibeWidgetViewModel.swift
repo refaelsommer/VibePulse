@@ -27,7 +27,11 @@ struct VibeWidgetViewModel {
         static let milestoneBadgeDefault = "%d-pick burst"
     }
 
-    let entry: VibeWidgetEntry
+    private let entry: VibeWidgetEntry
+
+    init(entry: VibeWidgetEntry) {
+        self.entry = entry
+    }
 
     static var displayNameText: String {
         LocalizedText.value(Metrics.displayNameKey, defaultValue: Metrics.displayNameDefault, comment: "Widget display name")

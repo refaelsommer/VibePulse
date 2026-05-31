@@ -12,7 +12,7 @@ enum SharedVibeData {
         static let snapshotStorageKey = "vibe.snapshot.v1"
     }
 
-    static var defaults: UserDefaults {
+    private static var defaults: UserDefaults {
         UserDefaults(suiteName: AppConfig.Identifiers.appGroupID) ?? .standard
     }
 

@@ -9,7 +9,7 @@ import SwiftUI
 import WidgetKit
 
 struct VibePulseWidget: Widget {
-    let kind = AppConfig.Identifiers.widgetKind
+    private let kind = AppConfig.Identifiers.widgetKind
 
     var body: some WidgetConfiguration {
         StaticConfiguration(kind: kind, provider: VibeWidgetProvider()) { entry in

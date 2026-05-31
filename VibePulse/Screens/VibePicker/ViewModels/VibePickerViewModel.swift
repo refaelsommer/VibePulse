@@ -43,7 +43,7 @@ final class VibePickerViewModel: ObservableObject {
         return String(format: format, selectedVibe.emoji, selectedVibe.localizedTitle)
     }
 
-    var emptyVibeText: String {
+    private var emptyVibeText: String {
         LocalizedText.value("vibe_picker.empty_vibe", defaultValue: "No vibe yet - pick one!", comment: "Shown before a vibe is selected")
     }
 

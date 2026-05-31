@@ -23,8 +23,12 @@ struct EmojiOrbitView: View {
         static let visibleScale = 1.0
     }
 
-    let isVisible: Bool
+    private let isVisible: Bool
     @State private var orbitDegrees = Metrics.orbitStartDegrees
+
+    init(isVisible: Bool) {
+        self.isVisible = isVisible
+    }
 
     private var orbitSymbols: [String] {
         Vibe.allCases.map(\.emoji)

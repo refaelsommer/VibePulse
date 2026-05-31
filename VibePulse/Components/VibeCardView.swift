@@ -18,10 +18,10 @@ struct VibeCardView: View {
         static let selectionDamping = 0.68
     }
 
-    let emoji: String
-    let titleText: String
-    let messageText: String
-    let isSelected: Bool
+    private let emoji: String
+    private let titleText: String
+    private let messageText: String
+    private let isSelected: Bool
 
     init(emoji: String, titleText: String, messageText: String, isSelected: Bool) {
         self.emoji = emoji

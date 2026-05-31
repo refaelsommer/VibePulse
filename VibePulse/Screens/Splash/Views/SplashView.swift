@@ -30,11 +30,16 @@ struct SplashView: View {
         static let particleShadowOpacity = 0.38
     }
 
-    let viewModel: SplashViewModel
-    let onFinished: () -> Void
+    private let viewModel: SplashViewModel
+    private let onFinished: () -> Void
 
     @State private var didAnimate = false
     @State private var isExiting = false
+
+    init(viewModel: SplashViewModel, onFinished: @escaping () -> Void) {
+        self.viewModel = viewModel
+        self.onFinished = onFinished
+    }
 
     var body: some View {
         ZStack {

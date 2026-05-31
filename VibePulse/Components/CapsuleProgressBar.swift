@@ -12,8 +12,13 @@ struct CapsuleProgressBar: View {
         static let height: CGFloat = 8
     }
 
-    let value: Double
-    let total: Double
+    private let value: Double
+    private let total: Double
+
+    init(value: Double, total: Double) {
+        self.value = value
+        self.total = total
+    }
 
     var body: some View {
         GeometryReader { proxy in

@@ -18,7 +18,11 @@ struct VibePulseWidgetEntryView: View {
     }
 
     @Environment(\.widgetFamily) private var family
-    let entry: VibeWidgetEntry
+    private let entry: VibeWidgetEntry
+
+    init(entry: VibeWidgetEntry) {
+        self.entry = entry
+    }
 
     private var viewModel: VibeWidgetViewModel {
         VibeWidgetViewModel(entry: entry)

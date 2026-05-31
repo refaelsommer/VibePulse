@@ -23,9 +23,14 @@ struct MilestoneBurstView: View {
         static let burstDamping = 0.62
     }
 
-    let viewModel: MilestoneBurstViewModel
-    let dismiss: () -> Void
+    private let viewModel: MilestoneBurstViewModel
+    private let dismiss: () -> Void
     @State private var pop = false
+
+    init(viewModel: MilestoneBurstViewModel, dismiss: @escaping () -> Void) {
+        self.viewModel = viewModel
+        self.dismiss = dismiss
+    }
 
     var body: some View {
         ZStack {

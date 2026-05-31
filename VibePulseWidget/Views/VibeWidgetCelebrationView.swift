@@ -26,7 +26,11 @@ struct VibeWidgetCelebrationView: View {
         static let rotationPhaseMultiplier = 24.0
     }
 
-    let entry: VibeWidgetEntry
+    private let entry: VibeWidgetEntry
+
+    init(entry: VibeWidgetEntry) {
+        self.entry = entry
+    }
 
     var body: some View {
         if entry.isCelebrationFrame {
