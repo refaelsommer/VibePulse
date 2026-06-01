@@ -13,6 +13,6 @@ struct VibeWidgetEntry: TimelineEntry {
     let phase: Int
 
     var isCelebrationFrame: Bool {
-        snapshot.isMilestone && phase >= 0
+        snapshot.isMilestone && phase >= AppConfig.Widget.firstCelebrationPhase
     }
 }

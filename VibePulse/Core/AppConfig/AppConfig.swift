@@ -23,7 +23,8 @@ enum AppConfig {
         static let supportedFamilies: [WidgetFamily] = [.systemSmall, .systemMedium]
         static let restingPhase = -1
         static let firstCelebrationPhase = 0
-        static let celebrationFrameCount = 6
+        static let celebrationFrameCount = 36
+        static let celebrationFrameIntervalSeconds = 1
         static let celebrationWindowMinutes = 8
         static let refreshIntervalHours = 1
     }
