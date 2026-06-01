@@ -39,6 +39,8 @@
 		100000000000000000000130 /* VibePulseDesign.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000230 /* VibePulseDesign.swift */; };
 		100000000000000000000131 /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000231 /* AppConfig.swift */; };
 		100000000000000000000132 /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000231 /* AppConfig.swift */; };
+		100000000000000000000133 /* MilestoneBurstViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000232 /* MilestoneBurstViewModel.swift */; };
+		100000000000000000000134 /* VibeOptionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000233 /* VibeOptionViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -97,6 +99,8 @@
 		100000000000000000000229 /* CapsuleProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapsuleProgressBar.swift; sourceTree = "<group>"; };
 		100000000000000000000230 /* VibePulseDesign.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VibePulseDesign.swift; sourceTree = "<group>"; };
 		100000000000000000000231 /* AppConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfig.swift; sourceTree = "<group>"; };
+		100000000000000000000232 /* MilestoneBurstViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MilestoneBurstViewModel.swift; sourceTree = "<group>"; };
+		100000000000000000000233 /* VibeOptionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VibeOptionViewModel.swift; sourceTree = "<group>"; };
 		100000000000000000000301 /* VibePulse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VibePulse.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		100000000000000000000302 /* VibePulseWidget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = VibePulseWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -226,6 +230,8 @@
 			isa = PBXGroup;
 			children = (
 				100000000000000000000203 /* VibePickerViewModel.swift */,
+				100000000000000000000233 /* VibeOptionViewModel.swift */,
+				100000000000000000000232 /* MilestoneBurstViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -448,6 +454,8 @@
 				100000000000000000000125 /* SplashParticle.swift in Sources */,
 				100000000000000000000112 /* VibeCardView.swift in Sources */,
 				100000000000000000000113 /* MilestoneBurstView.swift in Sources */,
+				100000000000000000000133 /* MilestoneBurstViewModel.swift in Sources */,
+				100000000000000000000134 /* VibeOptionViewModel.swift in Sources */,
 				100000000000000000000126 /* EmojiOrbitView.swift in Sources */,
 				100000000000000000000127 /* ConfettiBurstView.swift in Sources */,
 				100000000000000000000128 /* CapsuleProgressBar.swift in Sources */,

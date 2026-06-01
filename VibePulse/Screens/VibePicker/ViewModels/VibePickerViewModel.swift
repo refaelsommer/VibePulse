@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import SwiftUI
 import WidgetKit
 
 @MainActor
@@ -130,40 +129,5 @@ final class VibePickerViewModel: ObservableObject {
 
     private var isMilestonePick: Bool {
         snapshot.totalPickCount > .zero && snapshot.totalPickCount % AppConfig.Milestones.picksPerBurst == .zero
-    }
-}
-
-struct VibeOptionViewModel: Identifiable {
-    let vibe: Vibe
-
-    var id: String { vibe.id }
-    var emoji: String { vibe.emoji }
-    var titleText: String { vibe.localizedTitle }
-    var messageText: String { vibe.localizedMessage }
-    var colors: [Color] { vibe.colors }
-
-    init(vibe: Vibe) {
-        self.vibe = vibe
-    }
-}
-
-struct MilestoneBurstViewModel {
-    static let standard = MilestoneBurstViewModel()
-
-    var streakNumberText: String {
-        let defaultValue = "\(AppConfig.Milestones.picksPerBurst)"
-        return LocalizedText.value("milestone.streak_number", defaultValue: defaultValue, comment: "Milestone streak number")
-    }
-
-    var titleText: String {
-        LocalizedText.value("milestone.title", defaultValue: "Vibe streak unlocked", comment: "Milestone animation title")
-    }
-
-    var subtitleText: String {
-        LocalizedText.value("milestone.subtitle", defaultValue: "Your widget gets a celebration skin.", comment: "Milestone animation subtitle")
-    }
-
-    var confirmationButtonText: String {
-        LocalizedText.value("milestone.confirmation_button", defaultValue: "Cool, thanks!", comment: "Button that closes the milestone celebration")
     }
 }
