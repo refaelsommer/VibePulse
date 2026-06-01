@@ -23,6 +23,8 @@ struct VibeWidgetCelebrationView: View {
         static let rotationIndexMultiplier = 31.0
         static let rotationPhaseMultiplier = 42.0
         static let windAmplitude: CGFloat = 10
+        static let windPhaseMultiplier = 0.7
+        static let fallFrameCount = 14.0
         static let animationDuration = 0.95
     }
 
@@ -38,6 +40,7 @@ struct VibeWidgetCelebrationView: View {
                 ForEach(0..<Metrics.particleCount, id: \.self) { index in
                     confettiPiece(for: index)
                         .position(particlePosition(for: index, in: proxy.size))
+                        .opacity(particleOpacity(for: index))
                         .animation(
                             .linear(duration: Metrics.animationDuration),
                             value: entry.phase
@@ -51,30 +54,38 @@ struct VibeWidgetCelebrationView: View {
         let color = VibePulseDesign.Palette.paperConfetti[index % VibePulseDesign.Palette.paperConfetti.count]
         let width = Metrics.particleWidths[index % Metrics.particleWidths.count]
         let height = Metrics.particleHeights[index % Metrics.particleHeights.count]
-        let opacity = Metrics.baseParticleOpacity + Double(index % Metrics.particleOpacityCycle) * Metrics.particleOpacityStep
         let rotation = Double(index) * Metrics.rotationIndexMultiplier + Double(entry.phase) * Metrics.rotationPhaseMultiplier
 
         return RoundedRectangle(cornerRadius: VibePulseDesign.Radius.confetti, style: .continuous)
             .fill(color)
             .frame(width: width, height: height)
-            .opacity(opacity)
             .rotationEffect(.degrees(rotation))
     }
 
     private func particlePosition(for index: Int, in size: CGSize) -> CGPoint {
         let xRatio = ratio(for: index, multiplier: Metrics.xStepMultiplier)
-        let delayRatio = ratio(for: index, multiplier: Metrics.delayStepMultiplier)
         let windRatio = ratio(for: index, multiplier: Metrics.windStepMultiplier)
-        let progress = (Double(entry.phase) / Double(AppConfig.Widget.celebrationFrameCount) + Double(delayRatio))
-            .truncatingRemainder(dividingBy: 1)
+        let progress = fallProgress(for: index)
         let travelHeight = size.height + Metrics.offscreenPadding * 2
-        let wind = sin(Double(entry.phase) * 0.7 + Double(index)) * Metrics.windAmplitude
+        let wind = sin(Double(entry.phase) * Metrics.windPhaseMultiplier + Double(index)) * Metrics.windAmplitude
         let stableWindOffset = Metrics.windAmplitude * (windRatio - 0.5)
 
         return CGPoint(
             x: size.width * xRatio + stableWindOffset + wind,
             y: -Metrics.offscreenPadding + travelHeight * progress
         )
+    }
+
+    private func particleOpacity(for index: Int) -> Double {
+        let progress = fallProgress(for: index)
+        guard progress >= .zero, progress <= 1 else { return .zero }
+        return Metrics.baseParticleOpacity + Double(index % Metrics.particleOpacityCycle) * Metrics.particleOpacityStep
+    }
+
+    private func fallProgress(for index: Int) -> Double {
+        let delayRatio = ratio(for: index, multiplier: Metrics.delayStepMultiplier)
+        let startFrame = Double(delayRatio) * (Double(AppConfig.Widget.celebrationFrameCount) + Metrics.fallFrameCount) - Metrics.fallFrameCount
+        return (Double(entry.phase) - startFrame) / Metrics.fallFrameCount
     }
 
     private func ratio(for index: Int, multiplier: Int) -> CGFloat {
