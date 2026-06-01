@@ -9,7 +9,7 @@ import SwiftUI
 
 struct VibeWidgetCelebrationView: View {
     private struct Metrics {
-        static let particleCount = 104
+        static let particleCount = 140
         static let particleWidths: [CGFloat] = [4, 5, 7, 3]
         static let particleHeights: [CGFloat] = [10, 13, 8, 6]
         static let baseParticleOpacity = 0.7
@@ -19,12 +19,16 @@ struct VibeWidgetCelebrationView: View {
         static let xStepMultiplier = 37
         static let delayStepMultiplier = 23
         static let windStepMultiplier = 17
-        static let positionModulo = 100
+        static let hashCurveMultiplier = 11
+        static let positionModulo = 997
+        static let horizontalLaneCount = 7
+        static let horizontalLaneInsetRatio: CGFloat = 0.04
+        static let horizontalUsableRatio: CGFloat = 0.92
         static let rotationIndexMultiplier = 31.0
         static let rotationPhaseMultiplier = 42.0
         static let windAmplitude: CGFloat = 10
         static let windPhaseMultiplier = 0.7
-        static let fallFrameCount = 15.0
+        static let fallFrameCount = 7.0
         static let animationDuration = 0.95
     }
 
@@ -63,7 +67,7 @@ struct VibeWidgetCelebrationView: View {
     }
 
     private func particlePosition(for index: Int, in size: CGSize) -> CGPoint {
-        let xRatio = ratio(for: index, multiplier: Metrics.xStepMultiplier)
+        let xRatio = horizontalRatio(for: index)
         let windRatio = ratio(for: index, multiplier: Metrics.windStepMultiplier)
         let progress = fallProgress(for: index)
         let travelHeight = size.height + Metrics.offscreenPadding * 2
@@ -74,6 +78,16 @@ struct VibeWidgetCelebrationView: View {
             x: size.width * xRatio + stableWindOffset + wind,
             y: -Metrics.offscreenPadding + travelHeight * progress
         )
+    }
+
+    private func horizontalRatio(for index: Int) -> CGFloat {
+        let lane = index % Metrics.horizontalLaneCount
+        let laneProgress = (CGFloat(lane) + 0.5) / CGFloat(Metrics.horizontalLaneCount)
+        let jitter = ratio(for: index, multiplier: Metrics.xStepMultiplier) - 0.5
+        let laneWidth = 1 / CGFloat(Metrics.horizontalLaneCount)
+        let scatteredLaneProgress = laneProgress + jitter * laneWidth
+
+        return Metrics.horizontalLaneInsetRatio + scatteredLaneProgress * Metrics.horizontalUsableRatio
     }
 
     private func particleOpacity(for index: Int) -> Double {
@@ -89,7 +103,8 @@ struct VibeWidgetCelebrationView: View {
     }
 
     private func ratio(for index: Int, multiplier: Int) -> CGFloat {
-        let wrappedValue = index * multiplier % Metrics.positionModulo
+        let curvedIndex = index * index * Metrics.hashCurveMultiplier
+        let wrappedValue = (index * multiplier + curvedIndex) % Metrics.positionModulo
         return CGFloat(wrappedValue) / CGFloat(Metrics.positionModulo)
     }
 }
