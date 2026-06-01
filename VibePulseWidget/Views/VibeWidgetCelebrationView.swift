@@ -30,7 +30,7 @@ struct VibeWidgetCelebrationView: View {
         static let windAmplitude: CGFloat = 10
         static let windPhaseMultiplier = 0.7
         static let fallFrameCount = 7.0
-        static let initialEmptyFrameCount = 1.0
+        static let initialEmptyFrameCount = 3.0
         static let animationDuration = 0.95
     }
 
