@@ -9,9 +9,9 @@ import SwiftUI
 
 struct VibeWidgetCelebrationView: View {
     private struct Metrics {
-        static let particleCount = 140
-        static let particleWidths: [CGFloat] = [4, 5, 7, 3]
-        static let particleHeights: [CGFloat] = [10, 13, 8, 6]
+        static let particleCount = 240
+        static let particleWidths: [CGFloat] = [5, 6, 8, 4]
+        static let particleHeights: [CGFloat] = [12, 15, 10, 8]
         static let baseParticleOpacity = 0.7
         static let particleOpacityStep = 0.06
         static let particleOpacityCycle = 4
@@ -19,6 +19,7 @@ struct VibeWidgetCelebrationView: View {
         static let xStepMultiplier = 37
         static let delayStepMultiplier = 23
         static let windStepMultiplier = 17
+        static let colorStepMultiplier = 29
         static let hashCurveMultiplier = 11
         static let positionModulo = 997
         static let horizontalLaneCount = 7
@@ -29,6 +30,7 @@ struct VibeWidgetCelebrationView: View {
         static let windAmplitude: CGFloat = 10
         static let windPhaseMultiplier = 0.7
         static let fallFrameCount = 7.0
+        static let initialEmptyFrameCount = 1.0
         static let animationDuration = 0.95
     }
 
@@ -55,7 +57,7 @@ struct VibeWidgetCelebrationView: View {
     }
 
     private func confettiPiece(for index: Int) -> some View {
-        let color = VibePulseDesign.Palette.paperConfetti[index % VibePulseDesign.Palette.paperConfetti.count]
+        let color = VibePulseDesign.Palette.paperConfetti[colorIndex(for: index)]
         let width = Metrics.particleWidths[index % Metrics.particleWidths.count]
         let height = Metrics.particleHeights[index % Metrics.particleHeights.count]
         let rotation = Double(index) * Metrics.rotationIndexMultiplier + Double(entry.phase) * Metrics.rotationPhaseMultiplier
@@ -98,7 +100,11 @@ struct VibeWidgetCelebrationView: View {
 
     private func fallProgress(for index: Int) -> Double {
         let delayRatio = ratio(for: index, multiplier: Metrics.delayStepMultiplier)
-        let startFrame = Double(delayRatio) * (Double(AppConfig.Widget.celebrationFrameCount) + Metrics.fallFrameCount) - Metrics.fallFrameCount
+        let availableStartFrames = max(
+            1,
+            Double(AppConfig.Widget.celebrationFrameCount) - Metrics.fallFrameCount - Metrics.initialEmptyFrameCount
+        )
+        let startFrame = Metrics.initialEmptyFrameCount + Double(delayRatio) * availableStartFrames
         return (Double(entry.phase) - startFrame) / Metrics.fallFrameCount
     }
 
@@ -106,5 +112,11 @@ struct VibeWidgetCelebrationView: View {
         let curvedIndex = index * index * Metrics.hashCurveMultiplier
         let wrappedValue = (index * multiplier + curvedIndex) % Metrics.positionModulo
         return CGFloat(wrappedValue) / CGFloat(Metrics.positionModulo)
+    }
+
+    private func colorIndex(for index: Int) -> Int {
+        let colorCount = VibePulseDesign.Palette.paperConfetti.count
+        let curvedIndex = index * index * Metrics.hashCurveMultiplier
+        return (index * Metrics.colorStepMultiplier + curvedIndex) % colorCount
     }
 }
