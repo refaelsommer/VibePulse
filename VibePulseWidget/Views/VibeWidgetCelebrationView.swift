@@ -9,10 +9,10 @@ import SwiftUI
 
 struct VibeWidgetCelebrationView: View {
     private struct Metrics {
-        static let particleCount = 42
+        static let particleCount = 104
         static let particleWidths: [CGFloat] = [4, 5, 7, 3]
         static let particleHeights: [CGFloat] = [10, 13, 8, 6]
-        static let baseParticleOpacity = 0.62
+        static let baseParticleOpacity = 0.7
         static let particleOpacityStep = 0.06
         static let particleOpacityCycle = 4
         static let offscreenPadding: CGFloat = 28
@@ -24,7 +24,7 @@ struct VibeWidgetCelebrationView: View {
         static let rotationPhaseMultiplier = 42.0
         static let windAmplitude: CGFloat = 10
         static let windPhaseMultiplier = 0.7
-        static let fallFrameCount = 14.0
+        static let fallFrameCount = 22.0
         static let animationDuration = 0.95
     }
 

@@ -32,7 +32,7 @@ struct VibeWidgetProvider: TimelineProvider {
 
     private func celebrationEntries(for snapshot: VibeSnapshot, now: Date) -> [VibeWidgetEntry] {
         // Each second is a new target layout; stable SwiftUI particles animate between these phases.
-        (0..<AppConfig.Widget.celebrationFrameCount).map { phase in
+        let celebrationFrames = (0..<AppConfig.Widget.celebrationFrameCount).map { phase in
             VibeWidgetEntry(
                 date: Calendar.current.date(
                     byAdding: .second,
@@ -43,6 +43,16 @@ struct VibeWidgetProvider: TimelineProvider {
                 phase: phase
             )
         }
+
+        let restingDate = Calendar.current.date(
+            byAdding: .second,
+            value: AppConfig.Widget.celebrationFrameCount * AppConfig.Widget.celebrationFrameIntervalSeconds,
+            to: now
+        ) ?? now
+
+        return celebrationFrames + [
+            VibeWidgetEntry(date: restingDate, snapshot: snapshot, phase: AppConfig.Widget.restingPhase)
+        ]
     }
 }
 
